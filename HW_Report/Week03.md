@@ -5,3 +5,4 @@ HTML, CSS
 ## 組員分工情況
 第23組
 - 林姵均: HTML, CSS
+- 呂學銘: git repo架設, HTML小修復

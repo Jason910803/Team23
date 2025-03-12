@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 productPrice.textContent = `價格: $${product.price}`;
 
                 const productDetailLink = document.createElement('a');
-                productDetailLink.href = 'product-detail.html';
+                productDetailLink.href = 'product-detail.html?id=' + product.id; // Corrected URL
                 productDetailLink.textContent = '查看詳情';
 
                 const addToCartButton = document.createElement('button');

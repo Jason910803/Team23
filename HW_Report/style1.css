@@ -127,6 +127,19 @@ h1 a:active {
     text-align: center;
 }
 
+/* 🔹 小螢幕時的響應式調整 */
+@media (max-width: 576px) {
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 100%;
+        max-width: 350px; /* 避免商品過寬 */
+    }
+}
+
 .product img {
     width: 100%;
     height: 200px; /* 設置統一高度 */

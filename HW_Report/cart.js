@@ -35,16 +35,18 @@ document.addEventListener("DOMContentLoaded", function () {
         updateTotal();
     }
 
-    document.querySelectorAll(".product button").forEach(button => {
-        button.addEventListener("click", function () {
-            const productElement = this.closest(".product");
-            const productName = productElement.querySelector("h2").textContent;
-            const price = parseInt(productElement.querySelector("p").textContent.replace("價格: $", "").replace(",", ""));
-            const imageUrl = productElement.querySelector("img").src;  // 取得圖片 URL
+    // 使用事件委託監聽 "加入購物車" 按鈕的點擊事件
+    document.addEventListener("click", function (event) {
+        if (event.target.tagName === "BUTTON" && event.target.textContent === "加入購物車") {
+            const button = event.target;
+            const productName = button.dataset.name;
+            const price = parseFloat(button.dataset.price);
+            const imageUrl = button.dataset.image;
             addToCart(productName, price, imageUrl);
-        });
+        }
     });
 
+    // 監聽數量變更
     cartTable.addEventListener("input", function (event) {
         if (event.target.type === "number") {
             const quantity = parseInt(event.target.value);
@@ -60,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // 監聽刪除按鈕
     cartTable.addEventListener("click", function (event) {
         if (event.target.classList.contains("remove-btn")) {
             const row = event.target.closest("tr");

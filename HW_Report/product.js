@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const addToCartButton = document.createElement('button');
                 addToCartButton.textContent = '加入購物車';
+                addToCartButton.dataset.name = product.name;
+                addToCartButton.dataset.price = product.price;
+                addToCartButton.dataset.image = product.image;
 
                 productDiv.appendChild(productImage);
                 productDiv.appendChild(productName);

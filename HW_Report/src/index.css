@@ -169,29 +169,6 @@ button:hover {
   background-color: #218838;
 }
 
-/* 購物車 */
-/* .cart {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.cart table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.cart th, .cart td {
-  border: 1px solid #ddd;
-  padding: 8px;
-} */
-
 .cart {
   max-width: 800px;
   margin: 20px auto;
@@ -255,26 +232,77 @@ input[type="number"] {
   margin-top: 10px;
 }
 
+/* for checkout button */
+.checkout-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: auto;
+  display: block; /* 或放在 flex 容器中 */
+}
+
+/* for total price */
+.total-price {
+  margin-right: 5px;
+  font-size: 1.0rem;
+  text-align: right;
+}
+
+.checkout-btn:hover {
+  background-color: #218838;
+}
 
 /* 聯絡表單 */
 .contact {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-form {
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-group {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: auto;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 input, textarea {
-  margin: 10px 0;
-  padding: 8px;
+  padding: 10px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
 }
+
+button {
+  width: fit-content;
+  padding: 10px 30px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
 
 /* 頁尾 */
 footer {

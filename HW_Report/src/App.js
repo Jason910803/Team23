@@ -1,6 +1,7 @@
 import Products from './Products';
 import Cart from './Cart_react';
 import { useState } from 'react';
+import ContactForm from './ContactForm'; 
 
 function App() {
     const [cart, setCart] = useState(new Array());
@@ -50,6 +51,7 @@ function App() {
 
                 <section className="contact">
                     <h2>聯絡我們</h2>
+                    <ContactForm />
                 </section>
             </main>
 

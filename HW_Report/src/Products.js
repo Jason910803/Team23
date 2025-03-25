@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-function Products(){
+function Products({ addCart }){
     const [products, setProducts] = useState([]);
 
     // Fetch products when the component mounts
@@ -18,7 +18,7 @@ function Products(){
                         <h2>{product.name}</h2>
                         <p>價格: ${product.price}</p>
                         <a href={`product-detail.html?id=${product.id}`}>查看詳情</a>
-                        <button>加入購物車</button>
+                      <button onClick={() => addCart(product)}>加入購物車</button>
                     </div>
                 ))
             ) : (

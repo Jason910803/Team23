@@ -1,6 +1,22 @@
 import Products from './Products';
+import Cart from './Cart_react';
+import { useState } from 'react';
 
 function App() {
+    const [cart, setCart] = useState(new Array());
+
+    function addCart(product) {
+        setCart(c => c.concat(product));
+    }
+
+    function removeCart(product) {
+        let idx = cart.findIndex(p => p.name === product.name);
+        setCart(c => c.slice(0, idx).concat(c.slice(idx + 1)));
+    }
+
+    function removeRow(product) {
+        setCart(c => c.filter(p => p.name !== product.name));
+    }
 
     return (
         <>
@@ -28,10 +44,9 @@ function App() {
                     <button>家居用品</button>
                 </section>
 
-                <Products />
+              <Products addCart={addCart}/>
 
-                <section className="cart">
-                </section>
+              <Cart cart={cart} addCart={addCart} removeCart={removeCart} removeRow={removeRow}/>
 
                 <section className="contact">
                     <h2>聯絡我們</h2>

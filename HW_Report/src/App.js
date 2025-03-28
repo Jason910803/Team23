@@ -1,7 +1,7 @@
-import Products from './Products';
-import Cart from './Cart_react';
 import { useState } from 'react';
-import ContactForm from './ContactForm'; 
+import Products from './components/Products';
+import Cart from './components/Cart';
+import ContactForm from './components/ContactForm'; 
 
 function App() {
     const [cart, setCart] = useState(new Array());

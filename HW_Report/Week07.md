@@ -5,7 +5,7 @@
 - 使用 npm run build結合react和django
 ## 組員分工情況
 
-- 林姵均: 使用 npm run build結合react和django
+- 林姵均: 使用 npm run build、更動相對路徑等，使react和django結合
 - 呂學銘: 
 - 鄭絜元: 
 - 郭品謙: 

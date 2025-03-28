@@ -4,7 +4,7 @@ function Products({ addCart }){
 
     // Fetch products when the component mounts
     useEffect(() => {
-        fetch('/products.json') // Updated path to fetch from the public folder
+        fetch('/static/products.json') // Updated path to fetch from the public folder
             .then(response => response.json())
             .then(data => setProducts(data))
             .catch(error => console.error('Error loading products:', error));

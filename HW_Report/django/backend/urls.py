@@ -21,6 +21,6 @@ from django.urls import path
 
 urlpatterns = [
     # API routes go here
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),  # Place this BEFORE the catch-all re_path
     re_path(r"^.*$", TemplateView.as_view(template_name="index.html")),
 ]

@@ -3,7 +3,7 @@ import React from "react";
 // product : {name, id, price, image}
 // cart :  { ...product, amount }
 
-export default function Cart({ cart, addCart, removeCart, removeRow }) {
+function Cart({ cart, addCart, removeCart, removeRow }) {
   let cargo = new Map();
   for (let product of cart) {
     cargo.set(product.name, {
@@ -108,3 +108,5 @@ export default function Cart({ cart, addCart, removeCart, removeRow }) {
     </section>
   );
 }
+
+export default Cart;

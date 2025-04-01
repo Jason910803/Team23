@@ -1,10 +1,23 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+
 import Products from './components/Products';
 import Cart from './components/Cart';
 import ContactForm from './components/ContactForm'; 
 
+
 function App() {
-    const [cart, setCart] = useState(new Array());
+    const [cart, setCart] = useState([]);
+    const [products, setProducts] = useState([]);
+
+    if (products.length === 0) {
+        axios
+            .get("/api/products")
+            .then(res => setProducts(res.data))
+            .catch(err => {
+                console.log('Error fetching products:', err);
+            });
+    }
 
     function addCart(product) {
         setCart(c => c.concat(product));
@@ -45,7 +58,7 @@ function App() {
                     <button>家居用品</button>
                 </section>
 
-              <Products addCart={addCart}/>
+              <Products products={products} addCart={addCart}/>
 
               <Cart cart={cart} addCart={addCart} removeCart={removeCart} removeRow={removeRow}/>
 

@@ -12,7 +12,7 @@ function App() {
 
     if (products.length === 0) {
         axios
-            .get("/api/products")
+            .get("http://localhost:8000/api/products")
             .then(res => setProducts(res.data))
             .catch(err => {
                 console.log('Error fetching products:', err);

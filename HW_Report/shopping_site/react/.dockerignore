@@ -1,6 +1,5 @@
 # .dockerignore
 pnpm-lock.yaml
-.venv
 node_modules
 .git
 .gitignore

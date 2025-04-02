@@ -1,6 +1,6 @@
 FROM node:22.14-bookworm-slim
 
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY package.json ./
 RUN npm install
 

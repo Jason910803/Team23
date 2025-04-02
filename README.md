@@ -6,3 +6,4 @@ $ sudo docker compose up --build
 ```
 
 之後前往`http://localhost:3000`就可以看得到網頁了。
+關閉跑`sudo docker compose down`

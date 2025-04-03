@@ -37,74 +37,74 @@ function Cart({ cart, addCart, removeCart, removeRow }) {
           </tr>
         </thead>
         <tbody>
-          {products.length > 0 ? (
-            products.map((product) =>
-              product.amount < 0 ? null : (
-                <tr key={product.name}>
-                  <td>
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      width="50"
-                    />
-                  </td>
-                  <td>{product.name}</td>
-                  <td>
-                    <input
-                      type="number"
+          {
+            (products.length > 0) ?
+              (
+                products.map((product) =>
+                  (product.amount > 0) && (
+                    <tr key={product.name}>
+                      <td>
+                        <img src={product.image} alt={product.name} width="50"/>
+                      </td>
+                      <td>{product.name}</td>
+                      <td>
+                    <select className="amount-select"
                       value={product.amount}
-                      min="1"
-                      onChange={(e) => {
-                        let count = e.target.value - product.amount;
-                        let sign = Math.sign(count);
-                        for (let i = 0; i < Math.abs(count); i++) {
-                          sign > 0 ? addCart(product) : removeCart(product);
+                      onChange={e => {
+                        let diff = e.target.value - product.amount;
+                        console.log(e.target.value, diff);
+                        if (diff > 0) {
+                          [...Array(diff)].map(() => addCart(product));
+                        } else {
+                          [...Array(-diff)].map(() => removeCart(product));
                         }
-                      }}
-                    />
-                  </td>
-                  <td>${product.price.toLocaleString()}</td>
-                  <td className="subtotal">
-                    ${(product.price * product.amount).toLocaleString()}
-                  </td>
-                  <td>
-                    <button
-                      className="remove-btn"
-                      onClick={() => removeRow(product)}
-                    >
-                      刪除
-                    </button>
+                      }}>
+                      {
+                        [...Array(product.stock)].map((_, i) => (
+                          <option key={i} value={i + 1}>
+                            {i + 1}
+                          </option>
+                        ))
+                      }
+                    </select>
+                      </td>
+                      <td>${product.price.toLocaleString()}</td>
+                      <td className="subtotal">
+                        ${(product.price * product.amount).toLocaleString()}
+                      </td>
+                      <td>
+                        <button className="remove-btn" onClick={() => removeRow(product)}>
+                          刪除
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                )
+              ) :
+              (
+                <tr>
+                  <td colSpan="6" style={{ textAlign: "center" }}>
+                    購物車目前是空的 🛒
                   </td>
                 </tr>
               )
-            )
-          ) : (
-            <tr>
-              <td colSpan="6" style={{ textAlign: "center" }}>
-                購物車目前是空的 🛒
-              </td>
-            </tr>
-          )}
+          }
         </tbody>
       </table>
+      {
+        (total > 0) &&
+          (
+            <>
+              <p className="total-price" style={{ fontWeight: "bold", marginTop: "1rem" }}>
+                總金額：${total.toLocaleString()}
+              </p>
 
-      {total > 0 && (
-        <>
-          <p
-            className="total-price"
-            style={{ fontWeight: "bold", marginTop: "1rem" }}
-          >
-            總金額：${total.toLocaleString()}
-          </p>
-
-          <button
-            className="checkout-btn"
-            onClick={handleCheckout}
-          >
-            結帳
-          </button>
-        </>
-      )}
+              <button className="checkout-btn" onClick={handleCheckout}>
+                結帳
+              </button>
+            </>
+          )
+      }
     </section>
   );
 }

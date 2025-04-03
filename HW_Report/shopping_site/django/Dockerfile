@@ -7,7 +7,6 @@ ENV PYTHONUNBUFFERED=1
 RUN <<EOF
 apt-get update
 apt-get install -y --no-install-recommends
-postgresql-client
 rm -rf /var/lib/apt/lists/*
 EOF
 

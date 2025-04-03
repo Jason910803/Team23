@@ -1,6 +1,6 @@
 services:
   django:
-    image: django_team23
+    image: lipcut/django_team23
     container_name: django_team23
     command: python manage.py runserver 0.0.0.0:8000
     build:
@@ -12,7 +12,7 @@ services:
       - ./django:/app  
 
   react:
-    image: react_team23
+    image: lipcut/react_team23
     container_name: react_team23
     command: npm start
     build:

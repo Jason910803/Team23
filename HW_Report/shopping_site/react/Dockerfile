@@ -1,11 +1,15 @@
 FROM node:22.14-bookworm-slim
 
-RUN useradd -ms /bin/sh -u 1001 app
-USER app
+RUN <<EOF
+useradd -ms /bin/sh -u 1001 app
+mkdir /app
+chown app:app /app
+EOF
 
+USER app
 WORKDIR /app
 COPY package.json ./
-RUN npm install
+RUN npm install --no-audit --progress=false
 
 COPY --chown=app:app . .
 

@@ -10,7 +10,7 @@ function Products({ products, addCart }){
                         <h2>{product.name}</h2>
                         <p>價格: ${product.price}</p>
                         <a href={`product-detail.html?id=${product.id}`}>查看詳情</a>
-                      <button onClick={() => addCart(product)}>加入購物車</button>
+                      <button type="submit" onClick={() => addCart(product)}>加入購物車</button>
                     </div>
                 ))
             ) : (

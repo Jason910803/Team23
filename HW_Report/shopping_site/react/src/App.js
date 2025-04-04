@@ -17,19 +17,35 @@ function App() {
             .catch(err => {
                 console.log('Error fetching products:', err);
             });
-    }, [setProducts])
+    }, [setProducts]);
+
+    function checkToggle(product, value) {
+        let idx = cart.findIndex(p => p.id === product.id);
+        setCart(c => c.with(idx, {...product, checked: value ?? !c.at(idx).checked}));
+    }
 
     function addCart(product) {
-        setCart(c => c.concat(product));
+        let idx = cart.findIndex(p => p.id === product.id);
+        if (idx !== -1) {
+            setCart(c => c.with(
+                idx,
+                {...product, amount: c.at(idx).amount + 1}
+            ));
+        } else {
+            setCart(c => c.concat({...product, amount: 1, checked: false}));
+        }
     }
 
     function removeCart(product) {
-        let idx = cart.findIndex(p => p.name === product.name);
-        setCart(c => c.slice(0, idx).concat(c.slice(idx + 1)));
+        let idx = cart.findIndex(p => p.id === product.id);
+        setCart(c => c.with(
+            idx,
+            {...product, amount: c.at(idx).amount - 1}
+        ));
     }
 
     function removeRow(product) {
-        setCart(c => c.filter(p => p.name !== product.name));
+        setCart(c => c.filter(p => p.id !== product.id));
     }
 
     return (
@@ -60,7 +76,13 @@ function App() {
 
               <Products products={products} addCart={addCart}/>
 
-              <Cart cart={cart} addCart={addCart} removeCart={removeCart} removeRow={removeRow}/>
+              <Cart
+                cart={cart}
+                addCart={addCart}
+                removeCart={removeCart}
+                removeRow={removeRow}
+                checkToggle={checkToggle}
+              />
 
                 <section className="contact">
                     <h2>聯絡我們</h2>

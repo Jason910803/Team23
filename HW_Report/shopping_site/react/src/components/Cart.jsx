@@ -51,13 +51,13 @@ function Cart({ cart, addCart, removeCart, removeRow }) {
                     <select className="amount-select"
                       value={product.amount}
                       onChange={e => {
+                        let op = addCart;
                         let diff = e.target.value - product.amount;
-                        console.log(e.target.value, diff);
-                        if (diff > 0) {
-                          [...Array(diff)].map(() => addCart(product));
-                        } else {
-                          [...Array(-diff)].map(() => removeCart(product));
+                        if (diff < 0) {
+                          op = removeCart;
+                          diff = -diff;
                         }
+                        [...Array(diff)].map(() => op(product));
                       }}>
                       {
                         [...Array(product.stock)].map((_, i) => (

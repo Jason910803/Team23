@@ -1,0 +1,31 @@
+services:
+  django:
+    image: lipcut/django_team23
+    container_name: django_team23
+    command: python manage.py runserver 0.0.0.0:8000
+    build:
+      context: ./django
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./django:/app  
+
+  react:
+    image: lipcut/react_team23
+    container_name: react_team23
+    command: npm start
+    build:
+      context: ./react
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: ./react
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./react/package.json
+    ports:
+      - 3000:3000

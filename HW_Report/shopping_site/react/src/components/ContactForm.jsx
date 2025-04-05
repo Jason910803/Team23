@@ -1,5 +1,6 @@
 // ContactForm.jsx
 import { useState } from 'react';
+import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
     const [form, setForm] = useState({
@@ -21,8 +22,8 @@ export default function ContactForm() {
     }
 
     return (
-        <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+        <form className={styles.contactForm} onSubmit={handleSubmit}>
+            <div className={styles.formGroup}>
                 <label htmlFor="name">姓名</label>
                 <input
                 id="name"
@@ -34,7 +35,7 @@ export default function ContactForm() {
                 />
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor="email">Email</label>
                 <input
                 id="email"
@@ -46,7 +47,7 @@ export default function ContactForm() {
                 />
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor="message">訊息</label>
                 <textarea
                 id="message"
@@ -60,7 +61,5 @@ export default function ContactForm() {
 
         <button type="submit">送出</button>
         </form>
-
-
     );
 }

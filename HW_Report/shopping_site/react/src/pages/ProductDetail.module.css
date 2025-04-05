@@ -1,0 +1,27 @@
+/* pages/ProductDetail.module.css */
+
+.productDetail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+    max-height: 400px;
+    margin-bottom: 1rem;
+  }
+  
+  .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 1rem;
+  }
+  

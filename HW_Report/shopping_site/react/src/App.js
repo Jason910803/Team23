@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Products from './components/Products';
@@ -10,14 +10,14 @@ function App() {
     const [cart, setCart] = useState([]);
     const [products, setProducts] = useState([]);
 
-    if (products.length === 0) {
+    useEffect(() => {
         axios
             .get("http://localhost:8000/api/products")
             .then(res => setProducts(res.data))
             .catch(err => {
                 console.log('Error fetching products:', err);
             });
-    }
+    }, [setProducts]);
 
     function addCart(product) {
         setCart(c => c.concat(product));

@@ -7,6 +7,6 @@
 ## 組員分工情況
 
 - 林姵均: 使用 npm run build、更動相對路徑等，使react和django結合
-- 呂學銘: 
+- 呂學銘: 部署docker，完善django基礎架設
 - 鄭絜元: 重構前端 layout 並實作 SPA 架構與模組化分頁
 - 郭品謙: 

@@ -1,4 +1,6 @@
+// components/Cart.jsx
 import React from "react";
+import styles from './Cart.module.css';
 
 // product : {name, id, price, image}
 // cart :  { ...product, amount }
@@ -9,7 +11,7 @@ function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
     0
   );
 
-  function handleAmountSelect(e, product) {
+  const handleAmountSelect = (e, product) => {
     let op = addCart;
     let diff = e.target.value - product.amount;
     if (diff < 0) {
@@ -19,22 +21,21 @@ function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
     [...Array(diff)].map(() => op(product));
   }
 
-  function handleCheckout() {
-    cart.filter(p => p.checked).map(p => removeRow(p));
+  const handleCheckout = () => {
     alert(`總金額：$${total.toLocaleString()}，感謝您的購買！`);
-  }
+  };
 
   return (
-    <section className="cart">
+    <section className={styles.cart}>
       <h1>🛒 購物車</h1>
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>
               <input
                 type="checkbox"
-                checked={cart.length > 0 && cart.every(p => p.checked)}
-                onChange={e => cart.map(p => checkToggle(p, e.target.checked))}
+                checked={cart.length > 0 && cart.every(product => product.checked)}
+                onChange={e => cart.map(product => checkToggle(product, e.target.checked))}
               />
             </th>
             <th>商品圖片</th>
@@ -46,74 +47,56 @@ function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
           </tr>
         </thead>
         <tbody>
-          {
-            (cart.length > 0) ?
-              (
-                cart.map(p =>
-                  (p.amount > 0) && (
-                    <tr key={p.name}>
-                      <td>
-                        <input
-                          type="checkbox"
-                          checked={p.checked}
-                          onChange={e => checkToggle(p, e.target.checked)}
-                        />
-                      </td>
-                      <td>
-                        <img src={p.image} alt={p.name} width="50"/>
-                      </td>
-                      <td>{p.name}</td>
-                      <td>
-                        <select
-                          className="amount-select"
-                          value={p.amount}
-                          onChange={e => handleAmountSelect(e, p)}>
-                          {
-                            [...Array(p.stock)].map((_, i) => (
-                              <option key={i} value={i + 1}>
-                                {i + 1}
-                              </option>
-                            ))
-                          }
-                        </select>
-                      </td>
-                      <td>${p.price.toLocaleString()}</td>
-                      <td className="subtotal">
-                        ${(p.price * p.amount).toLocaleString()}
-                      </td>
-                      <td>
-                        <button className="remove-btn" onClick={() => removeRow(p)}>
-                          刪除
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                )
-              ) :
-              (
-                <tr>
-                  <td colSpan="7" style={{ textAlign: "center" }}>
-                    購物車目前是空的 🛒
+          {cart.length > 0 ? (
+            cart.map(product =>
+              product.amount < 0 ? null : (
+                <tr key={product.name}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={product.checked}
+                      onChange={e => checkToggle(product, e.target.checked)}
+                      />
+                  </td>
+                  <td><img src={product.image} alt={product.name} width="50" /></td>
+                  <td>{product.name}</td>
+                  <td>
+                    <select
+                      className="amount-select"
+                      value={product.amount}
+                      onChange={e => handleAmountSelect(e, product)}>
+                      {
+                        [...Array(product.stock)].map((_, i) => (
+                          <option key={i} value={i + 1}>
+                            {i + 1}
+                          </option>
+                        ))
+                      }
+                    </select>
+                  </td>
+                  <td>${product.price.toLocaleString()}</td>
+                  <td>${(product.price * product.amount).toLocaleString()}</td>
+                  <td>
+                    <button className={styles.removeBtn} onClick={() => removeRow(product)}>刪除</button>
                   </td>
                 </tr>
               )
-          }
+            )
+          ) : (
+            <tr>
+              <td colSpan="7" style={{ textAlign: "center" }}>購物車目前是空的 🛒</td>
+            </tr>
+          )}
         </tbody>
       </table>
-      {
-        (total > 0) &&
-          (
-            <>
-              <p className="total-price" style={{ fontWeight: "bold", marginTop: "1rem" }}>
-                總金額：${total.toLocaleString()}
-              </p>
-
-              <button className="checkout-btn" onClick={handleCheckout}>
-                結帳
-              </button>
-            </>
-          )
-      }
+      {total > 0 && (
+        <>
+          <p className={styles.totalPrice} style={{ fontWeight: "bold", marginTop: "1rem" }}>
+            總金額：${total.toLocaleString()}
+          </p>
+          <button className={styles.checkoutBtn} onClick={handleCheckout}>結帳</button>
+        </>
+      )}
     </section>
   );
 }

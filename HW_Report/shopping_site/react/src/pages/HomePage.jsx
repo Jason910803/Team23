@@ -23,10 +23,11 @@ function HomePage() {
   const addCart = (product) => {
     let idx = cart.findIndex(p => p.id === product.id);
     if (idx !== -1) {
-      setCart(c => c.with(
-        idx,
-        {...product, amount: c.at(idx).amount + 1}
-      ));
+      setCart(c => {
+        let newAmount = c.at(idx).amount + 1;
+        if (newAmount > product.stock) newAmount = product.stock;
+        return c.with(idx, {...product, amount: newAmount});
+      });
     } else {
       setCart(c => c.concat({...product, amount: 1, checked: false}));
     }

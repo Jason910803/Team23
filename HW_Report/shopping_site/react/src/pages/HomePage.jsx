@@ -15,19 +15,41 @@ function HomePage() {
       .catch(err => console.log('Error fetching products:', err));
   }, []);
 
-  const addCart = product => setCart(c => [...c, product]);
-  const removeCart = product => {
-    const idx = cart.findIndex(p => p.name === product.name);
-    setCart(c => [...c.slice(0, idx), ...c.slice(idx + 1)]);
-  };
-  const removeRow = product => {
-    setCart(c => c.filter(p => p.name !== product.name));
-  };
+  const checkToggle = (product, value) => {
+    let idx = cart.findIndex(p => p.id === product.id);
+    setCart(c => c.with(idx, {...product, checked: value ?? !c.at(idx).checked}));
+  }
+
+  const addCart = (product) => {
+    let idx = cart.findIndex(p => p.id === product.id);
+    if (idx !== -1) {
+      setCart(c => {
+        let newAmount = c.at(idx).amount + 1;
+        if (newAmount > product.stock) newAmount = product.stock;
+        return c.with(idx, {...product, amount: newAmount});
+      });
+    } else {
+      setCart(c => c.concat({...product, amount: 1, checked: false}));
+    }
+  }
+
+  const removeCart = (product) => {
+    let idx = cart.findIndex(p => p.id === product.id);
+    setCart(c => c.with(
+      idx,
+      {...product, amount: c.at(idx).amount - 1}
+    ));
+  }
+
+  const removeRow = (product) => {
+    setCart(c => c.filter(p => p.id !== product.id));
+  }
+
 
   return (
     <div className={styles.pageWrapper}>
       <Products products={products} addCart={addCart} />
-      <Cart cart={cart} addCart={addCart} removeCart={removeCart} removeRow={removeRow} />
+      <Cart cart={cart} addCart={addCart} removeCart={removeCart} removeRow={removeRow} checkToggle={checkToggle}/>
     </div>
   );
 }

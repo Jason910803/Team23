@@ -33,7 +33,7 @@ $ sudo docker compose up --watch
 或是在原本開啓的終端機按`W`鍵開關。
 ## 組員分工情況
 
-- 林姵均: 初步結合react和django
-- 呂學銘: 部署docker，完善django基礎架設
-- 鄭絜元: 重構前端 layout 並實作 SPA 架構與模組化分頁
+- 林姵均: 40% 初步結合react和django
+- 呂學銘: 30% 部署docker，完善django基礎架設
+- 鄭絜元: 30% 重構前端 layout 並實作 SPA 架構與模組化分頁
 - 郭品謙: 

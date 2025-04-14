@@ -22,6 +22,7 @@ function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
   }
 
   const handleCheckout = () => {
+    cart.filter(p => p.checked).map(p => removeRow(p));
     alert(`總金額：$${total.toLocaleString()}，感謝您的購買！`);
   };
 

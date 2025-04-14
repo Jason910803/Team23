@@ -22,7 +22,7 @@ function ProductDetail() {
         <h1 className="mb-4 text-center">{product.name}</h1>
         <img src={product.image} alt={product.name} className={styles.image} />
         <p className="mt-3">{product.description}</p>
-        <p className={styles.price}>價格: ${product.price}</p>
+        <p className={styles.price}>${product.price}</p>
 
         {/* 🔙 返回首頁按鈕 */}
         <div className="text-center mt-4">

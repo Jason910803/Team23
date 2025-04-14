@@ -4,9 +4,12 @@ import Products from '../components/Products';
 import Cart from '../components/Cart';
 import styles from './HomePage.module.css';  // ✅ 匯入 CSS Module
 
+
 function HomePage() {
-  const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState(localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []);
+
+  localStorage.setItem('cart', JSON.stringify(cart));
 
   useEffect(() => {
     axios

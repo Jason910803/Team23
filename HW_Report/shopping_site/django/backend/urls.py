@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,7 +23,7 @@ from rest_framework import routers
 from products.views import ProductViewSet
 
 router = routers.DefaultRouter()
-router.register(r'products', ProductViewSet, "products")
+router.register(r"products", ProductViewSet, "products")
 
 urlpatterns = [
     # API routes go here

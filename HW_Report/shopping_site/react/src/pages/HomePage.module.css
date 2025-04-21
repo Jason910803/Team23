@@ -1,8 +1,6 @@
 .pageWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 40px; /* 每個 section 間距 */
-    padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 40px; /* 每個 section 間距 */
+	padding: 2rem;
 }
-
-  

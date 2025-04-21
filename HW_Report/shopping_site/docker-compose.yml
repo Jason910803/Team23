@@ -9,7 +9,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./django:/app  
+      - ./django:/app
 
   react:
     image: lipcut/react_team23

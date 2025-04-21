@@ -27,3 +27,5 @@ yarn-error.log*
 **/__pycache__/
 .venv
 .ruff_cache
+
+megalinter-reports/

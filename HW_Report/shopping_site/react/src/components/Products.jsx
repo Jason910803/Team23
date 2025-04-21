@@ -8,10 +8,11 @@ function Products({ products, addCart }) {
 			{products.length > 0 ? (
 				products.map((product) => (
 					<div key={product.id} className={styles.product}>
-						<img src={product.image} alt={product.name} />
-						<h2>{product.name}</h2>
-						<p>價格: ${product.price}</p>
-						<Link to={`/product/${product.id}`}>查看詳情</Link>
+						<Link to={`/product/${product.id}`}>
+							<img src={product.image} alt={product.name} />
+							<h2>{product.name}</h2>
+							<h3 className={styles.price}>${product.price}</h3>
+						</Link>
 						<button type="button" onClick={() => addCart(product)}>
 							加入購物車
 						</button>

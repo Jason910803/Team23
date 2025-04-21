@@ -41,7 +41,7 @@
 }
 
 button {
-	background-color: #28a745;
+	background-color: royalblue;
 	color: white;
 	border: none;
 	padding: 10px;
@@ -51,5 +51,12 @@ button {
 }
 
 button:hover {
-	background-color: #218838;
+	background-color: deepskyblue;
+}
+
+.price {
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: crimson;
+	margin-top: 1rem;
 }

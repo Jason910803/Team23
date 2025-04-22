@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-      <div className="container-fluid">
+      <div className=" container">
         {/* Logo or Brand */}
         <Link className="navbar-brand" to="/">
           購物網站
@@ -28,7 +28,12 @@ function Header() {
         {/* 導覽列內容 */}
         <div className="collapse navbar-collapse" id="navbarContent">
           {/* 導覽連結 */}
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link className="nav-link" to="/cart">
+                購物車
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/about">
                 關於我們
@@ -37,11 +42,6 @@ function Header() {
             <li className="nav-item">
               <Link className="nav-link" to="/contact">
                 聯絡我們
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cart">
-                購物車
               </Link>
             </li>
           </ul>

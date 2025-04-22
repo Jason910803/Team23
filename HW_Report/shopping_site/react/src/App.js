@@ -27,28 +27,29 @@ function App() {
   }, []);
 
   const checkToggle = (product, value) => {
-    let idx = cart.findIndex((p) => p.id === product.id);
-    setCart((c) =>
-      c.with(idx, { ...product, checked: value ?? !c.at(idx).checked }),
-    );
+    setCart((c) => {
+      let idx = c.findIndex((p) => p.id === product.id);
+      return c.with(idx, { ...product, checked: value ?? !c.at(idx).checked });
+    });
   };
 
   const addCart = (product) => {
-    let idx = cart.findIndex((p) => p.id === product.id);
-    if (idx !== -1) {
-      setCart((c) => {
-        let newAmount = c.at(idx).amount + 1;
-        if (newAmount > product.stock) newAmount = product.stock;
-        return c.with(idx, { ...product, amount: newAmount });
-      });
-    } else {
-      setCart((c) => c.concat({ ...product, amount: 1, checked: false }));
-    }
+    setCart((c) => {
+      let idx = c.findIndex((p) => p.id === product.id);
+      if (idx === -1)
+        return c.concat({ ...product, amount: 1, checked: false });
+
+      let newAmount = c.at(idx).amount + 1;
+      if (newAmount > product.stock) newAmount = product.stock;
+      return c.with(idx, { ...product, amount: newAmount });
+    });
   };
 
   const removeCart = (product) => {
-    let idx = cart.findIndex((p) => p.id === product.id);
-    setCart((c) => c.with(idx, { ...product, amount: c.at(idx).amount - 1 }));
+    setCart((c) => {
+      let idx = c.findIndex((p) => p.id === product.id);
+      return c.with(idx, { ...product, amount: c.at(idx).amount - 1 });
+    });
   };
 
   const removeRow = (product) => {
@@ -63,7 +64,10 @@ function App() {
             index
             element={<HomePage products={products} addCart={addCart} />}
           />
-          <Route path="product/:id" element={<ProductDetail />} />
+          <Route
+            path="product/:id"
+            element={<ProductDetail cart={cart} addCart={addCart} />}
+          />
           <Route path="contact" element={<ContactPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route

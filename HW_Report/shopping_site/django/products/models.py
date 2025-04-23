@@ -9,5 +9,5 @@ class Product(models.Model):
     stock = models.IntegerField()
     image = models.ImageField(upload_to='products/', blank=True, null=True)
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return str(self.name)

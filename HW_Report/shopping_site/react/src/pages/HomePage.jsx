@@ -2,7 +2,7 @@ import React from "react";
 import Products from "../components/Products";
 import styles from "./HomePage.module.css"; // ✅ 匯入 CSS Module
 
-function HomePage({ products, addCart }) {
+function HomePage({ products, handleAddToCart }) {
   return (
     <div className={styles.pageWrapper}>
       <form className="d-flex justify-content-center" role="search">
@@ -16,7 +16,7 @@ function HomePage({ products, addCart }) {
           Search
         </button>
       </form>
-      <Products products={products} addCart={addCart} />
+      <Products products={products} handleAddToCart={handleAddToCart} />
     </div>
   );
 }

@@ -1,10 +1,9 @@
 // pages/ProductDetail.jsx
 import React, { useEffect, useState } from "react";
-import { toast, Bounce } from "react-toastify";
 import { useParams, Link } from "react-router-dom"; // ✅ 加入 Link
 import styles from "./ProductDetail.module.css";
 
-function ProductDetail({ cart, addCart }) {
+function ProductDetail({ cart, handleAddToCart }) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
@@ -23,31 +22,6 @@ function ProductDetail({ cart, addCart }) {
 
   const handleQuantityChange = (event) => {
     setSelectedQuantity(parseInt(event.target.value, 10));
-  };
-
-  const notify = (messege, type = "info") => {
-    toast[type](messege, {
-      position: "bottom-right",
-      autoClose: 3000,
-      draggable: false,
-      hideProgressBar: true,
-      closeOnClick: true,
-      transition: Bounce,
-    });
-  };
-
-  const handleAddToCart = () => {
-    let amount = cart.find((p) => p.id === product.id)?.amount;
-    if (amount && selectedQuantity + amount > product.stock) {
-      for (let i = 0; i < product.stock - amount; i++) addCart(product);
-      notify(
-        `您選的數量超過庫存，為您加入 ${product.stock - amount} 件 ${product.name} 到購物車`,
-        "warn",
-      );
-      return;
-    }
-    for (let i = 0; i < selectedQuantity; i++) addCart(product);
-    notify(`成功加入 ${selectedQuantity} 件 ${product.name} 到購物車`);
   };
 
   if (!product) return <p className="text-center mt-5">載入中...</p>;
@@ -82,7 +56,7 @@ function ProductDetail({ cart, addCart }) {
               <button
                 className="btn btn-primary "
                 style={{ marginTop: "0px" }}
-                onClick={handleAddToCart}
+                onClick={() => handleAddToCart(product, selectedQuantity)}
                 type="button"
               >
                 加入購物車

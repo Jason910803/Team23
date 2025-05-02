@@ -12,7 +12,7 @@ function HomePage({ products, handleAddToCart }) {
           placeholder="搜尋商品"
           aria-label="Search"
         />
-        <button className="btn-dark" type="submit">
+        <button className="btn-dark" style={{ marginTop: "0px" }} type="submit">
           Search
         </button>
       </form>

@@ -2,11 +2,12 @@ services:
   django:
     image: lipcut/django_team23
     container_name: django_team23
-    command: gunicorn -b 0.0.0.0:8000 backend.wsgi
+    command: uwsgi
     build:
       context: ./django
       dockerfile: Dockerfile
     ports:
+      - 8001:80
       - 8000:8000
     volumes:
       - ./django:/app

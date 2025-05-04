@@ -2,7 +2,7 @@ services:
   django:
     image: lipcut/django_team23
     container_name: django_team23
-    command: uwsgi
+    command: python manage.py runserver 0.0.0.0:8000
     build:
       context: ./django
       dockerfile: Dockerfile

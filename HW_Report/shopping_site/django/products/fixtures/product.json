@@ -1,0 +1,103 @@
+[
+    { "model": "products.category", "pk": 1, "fields": { "name": "電子產品", "description": "各式電子裝置" } },
+    { "model": "products.category", "pk": 2, "fields": { "name": "家電", "description": "家庭用電器" } },
+    { "model": "products.category", "pk": 3, "fields": { "name": "美妝", "description": "化妝與護膚用品" } },
+    { "model": "products.category", "pk": 4, "fields": { "name": "文具", "description": "學生與辦公用品" } },
+    { "model": "products.category", "pk": 5, "fields": { "name": "服飾", "description": "潮流與經典穿搭" } },
+  
+    { "model": "products.product", "pk": 1, "fields": {
+      "name": "藍牙喇叭", "description": "輕巧便攜的無線藍牙喇叭",
+      "price": "1299", "stock": 30,
+      "image": "https://shop.statemusic.com.tw/soundtools/16497-tm_large_default/marshall-stanmore-ii-.jpg",
+      "created_at": "2024-05-01T12:00:00Z", "category": 1
+    }},
+    { "model": "products.product", "pk": 2, "fields": {
+      "name": "行動電源", "description": "10000mAh 大容量",
+      "price": "699", "stock": 40,
+      "image": "https://www.cdn-tkec.tw/image/product/202309/243177_M.jpg?t=20230921183010",
+      "created_at": "2024-05-01T12:10:00Z", "category": 1
+    }},
+    { "model": "products.product", "pk": 3, "fields": {
+      "name": "螢幕支架", "description": "可調式人體工學設計",
+      "price": "899", "stock": 20,
+      "image": "https://cs-a.ecimg.tw/items/DCBB0DA900ABICE/000001_1704334254.jpg",
+      "created_at": "2024-05-01T12:20:00Z", "category": 1
+    }},
+  
+    { "model": "products.product", "pk": 4, "fields": {
+      "name": "微波爐", "description": "20L 家用型微波爐",
+      "price": "2390", "stock": 10,
+      "image": "https://i4.momoshop.com.tw/1705741786/goodsimg/0003/962/541/3962541_OL_m.webp",
+      "created_at": "2024-05-01T13:00:00Z", "category": 2
+    }},
+    { "model": "products.product", "pk": 5, "fields": {
+      "name": "電熱水壺", "description": "不鏽鋼材質，自動斷電",
+      "price": "790", "stock": 25,
+      "image": "https://img.tw.my-best.com/product_images/079a10b1859e94b66a8c4d94e7dab1e3.jpeg?ixlib=rails-4.3.1&q=70&lossless=0&w=800&h=800&fit=clip&s=39dbe17140b78df2045599841929cd27",
+      "created_at": "2024-05-01T13:10:00Z", "category": 2
+    }},
+    { "model": "products.product", "pk": 6, "fields": {
+      "name": "掃地機器人", "description": "智慧路線，自動集塵",
+      "price": "6990", "stock": 8,
+      "image": "https://i3.momoshop.com.tw/1726895031/goodsimg/0013/275/307/13275307_O_m.webp",
+      "created_at": "2024-05-01T13:20:00Z", "category": 2
+    }},
+  
+    { "model": "products.product", "pk": 7, "fields": {
+      "name": "唇膏", "description": "自然持久顯色",
+      "price": "350", "stock": 60,
+      "image": "https://sdcdn.io/mac/tw/mac_sku_S4K029_1x1_0.png?width=1080&height=1080",
+      "created_at": "2024-05-01T14:00:00Z", "category": 3
+    }},
+    { "model": "products.product", "pk": 8, "fields": {
+      "name": "保濕乳液", "description": "敏感肌適用、不黏膩",
+      "price": "480", "stock": 50,
+      "image": "https://b2eimg.pxec.com.tw/00103702/77127533f2e84c6db40d6de5d2a0177f.jpg",
+      "created_at": "2024-05-01T14:10:00Z", "category": 3
+    }},
+    { "model": "products.product", "pk": 9, "fields": {
+      "name": "潔面乳", "description": "溫和潔淨、無皂鹼",
+      "price": "320", "stock": 45,
+      "image": "https://img.nivea.com/-/media/miscellaneous/media-center-items/4/9/1/9555624b6e104aa38b1f93b58aaedef3-web_1010x1180_transparent_png.png",
+      "created_at": "2024-05-01T14:20:00Z", "category": 3
+    }},
+  
+    { "model": "products.product", "pk": 10, "fields": {
+      "name": "原子筆", "description": "0.5mm 黑色筆芯",
+      "price": "20", "stock": 150,
+      "image": "https://i1.momoshop.com.tw/1695895126/goodsimg/0011/920/927/11920927_O_m.webp",
+      "created_at": "2024-05-01T15:00:00Z", "category": 4
+    }},
+    { "model": "products.product", "pk": 11, "fields": {
+      "name": "便利貼", "description": "多色組合，適合筆記",
+      "price": "39", "stock": 90,
+      "image": "https://i5.momoshop.com.tw/1724652292/goodsimg/TP000/0212/0000/965/TP00002120000965_O_m.jpg",
+      "created_at": "2024-05-01T15:10:00Z", "category": 4
+    }},
+    { "model": "products.product", "pk": 12, "fields": {
+      "name": "文件夾", "description": "A4 尺寸，五入組",
+      "price": "55", "stock": 70,
+      "image": "https://www.9x9.tw/public/files/product/thumb/N00780-12000S.jpg",
+      "created_at": "2024-05-01T15:20:00Z", "category": 4
+    }},
+  
+    { "model": "products.product", "pk": 13, "fields": {
+      "name": "連帽外套", "description": "秋冬保暖百搭款",
+      "price": "1280", "stock": 35,
+      "image": "https://image-cdn-flare.qdm.cloud/q6000d6695bf83/image/data/2024/08/21/2ffb9680315a20dfa27a8fd1840aab47.jpeg",
+      "created_at": "2024-05-01T16:00:00Z", "category": 5
+    }},
+    { "model": "products.product", "pk": 14, "fields": {
+      "name": "牛仔褲", "description": "直筒版型，舒適彈性",
+      "price": "980", "stock": 40,
+      "image": "https://awsresources.baozun.com/aws/96001088/20220811/D5F0575B23DC3585CB00843F681FAD49.jpg?x-oss-process=image/interlace,1/resize,m_pad,w_640,h_853",
+      "created_at": "2024-05-01T16:10:00Z", "category": 5
+    }},
+    { "model": "products.product", "pk": 15, "fields": {
+      "name": "T-Shirt", "description": "純棉短袖 T 恤，多色可選",
+      "price": "399", "stock": 60,
+      "image": "https://img.gogoshop.cloud/93187966/A98AUQIH21Z.jpg",
+      "created_at": "2024-05-01T16:20:00Z", "category": 5
+    }}
+  ]
+  

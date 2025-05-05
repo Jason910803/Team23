@@ -2,14 +2,14 @@ services:
   django:
     image: lipcut/django_team23
     container_name: django_team23
-    command: python manage.py runserver 0.0.0.0:8000
+    command: uwsgi
     build:
       context: ./django
       dockerfile: Dockerfile
     ports:
       - 8000:8000
     volumes:
-      - ./django:/app  
+      - ./django:/app
 
   react:
     image: lipcut/react_team23

@@ -1,15 +1,14 @@
 // components/Cart.jsx
 import React from "react";
-import styles from './Cart.module.css';
+import styles from "./Cart.module.css";
 
 // product : {name, id, price, image}
 // cart :  { ...product, amount }
 
 function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
-  const total = cart.filter(p => p.checked).reduce(
-    (sum, product) => sum + product.price * product.amount,
-    0
-  );
+  const total = cart
+    .filter((p) => p.checked)
+    .reduce((sum, product) => sum + product.price * product.amount, 0);
 
   const handleAmountSelect = (e, product) => {
     let op = addCart;
@@ -19,9 +18,10 @@ function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
       diff = -diff;
     }
     [...Array(diff)].map(() => op(product));
-  }
+  };
 
   const handleCheckout = () => {
+    cart.filter((p) => p.checked).map((p) => removeRow(p));
     alert(`總金額：$${total.toLocaleString()}，感謝您的購買！`);
   };
 
@@ -34,8 +34,12 @@ function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
             <th>
               <input
                 type="checkbox"
-                checked={cart.length > 0 && cart.every(product => product.checked)}
-                onChange={e => cart.map(product => checkToggle(product, e.target.checked))}
+                checked={
+                  cart.length > 0 && cart.every((product) => product.checked)
+                }
+                onChange={(e) =>
+                  cart.map((product) => checkToggle(product, e.target.checked))
+                }
               />
             </th>
             <th>商品圖片</th>
@@ -48,53 +52,69 @@ function Cart({ cart, addCart, removeCart, removeRow, checkToggle }) {
         </thead>
         <tbody>
           {cart.length > 0 ? (
-            cart.map(product =>
+            cart.map((product) =>
               product.amount < 0 ? null : (
                 <tr key={product.name}>
                   <td>
                     <input
                       type="checkbox"
                       checked={product.checked}
-                      onChange={e => checkToggle(product, e.target.checked)}
-                      />
+                      onChange={(e) => checkToggle(product, e.target.checked)}
+                    />
                   </td>
-                  <td><img src={product.image} alt={product.name} width="50" /></td>
+                  <td>
+                    <img src={product.image} alt={product.name} width="50" />
+                  </td>
                   <td>{product.name}</td>
                   <td>
-                    <select
-                      className="amount-select"
-                      value={product.amount}
-                      onChange={e => handleAmountSelect(e, product)}>
-                      {
-                        [...Array(product.stock)].map((_, i) => (
+                    <div className="d-flex justify-content-center">
+                      <select
+                        className="form-select "
+                        style={{ width: "auto" }}
+                        value={product.amount}
+                        onChange={(e) => handleAmountSelect(e, product)}
+                      >
+                        {[...Array(product.stock)].map((_, i) => (
                           <option key={i} value={i + 1}>
                             {i + 1}
                           </option>
-                        ))
-                      }
-                    </select>
+                        ))}
+                      </select>
+                    </div>
                   </td>
                   <td>${product.price.toLocaleString()}</td>
                   <td>${(product.price * product.amount).toLocaleString()}</td>
                   <td>
-                    <button className={styles.removeBtn} onClick={() => removeRow(product)}>刪除</button>
+                    <button
+                      className={styles.removeBtn}
+                      onClick={() => removeRow(product)}
+                    >
+                      刪除
+                    </button>
                   </td>
                 </tr>
-              )
+              ),
             )
           ) : (
             <tr>
-              <td colSpan="7" style={{ textAlign: "center" }}>購物車目前是空的 🛒</td>
+              <td colSpan="7" style={{ textAlign: "center" }}>
+                購物車目前是空的 🛒
+              </td>
             </tr>
           )}
         </tbody>
       </table>
       {total > 0 && (
         <>
-          <p className={styles.totalPrice} style={{ fontWeight: "bold", marginTop: "1rem" }}>
+          <p
+            className={styles.totalPrice}
+            style={{ fontWeight: "bold", marginTop: "1rem" }}
+          >
             總金額：${total.toLocaleString()}
           </p>
-          <button className={styles.checkoutBtn} onClick={handleCheckout}>結帳</button>
+          <button className={styles.checkoutBtn} onClick={handleCheckout}>
+            結帳
+          </button>
         </>
       )}
     </section>

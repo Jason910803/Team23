@@ -1,18 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Products.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Products.module.css";
 
-function Products({ products, addCart }) {
+function Products({ products, handleAddToCart }) {
   return (
     <section className={styles.products}>
       {products.length > 0 ? (
-        products.map(product => (
+        products.map((product) => (
           <div key={product.id} className={styles.product}>
-            <img src={product.image} alt={product.name} />
-            <h2>{product.name}</h2>
-            <p>價格: ${product.price}</p>
-            <Link to={`/product/${product.id}`}>查看詳情</Link>
-            <button onClick={() => addCart(product)}>加入購物車</button>
+            <Link to={`/product/${product.id}`}>
+              <img src={product.image} alt={product.name} />
+              <h2>{product.name}</h2>
+              <h2 className={styles.price}>${product.price}</h2>
+            </Link>
+            <button onClick={() => handleAddToCart(product)}>加入購物車</button>
           </div>
         ))
       ) : (
@@ -23,4 +24,3 @@ function Products({ products, addCart }) {
 }
 
 export default Products;
-

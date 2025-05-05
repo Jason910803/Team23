@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
@@ -10,7 +9,6 @@ import AboutPage from "./pages/AboutPage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 
 function App() {
-  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState(
     localStorage.getItem("cart")
       ? JSON.parse(localStorage.getItem("cart"))
@@ -18,13 +16,6 @@ function App() {
   );
 
   localStorage.setItem("cart", JSON.stringify(cart));
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/products/")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.log("Error fetching products:", err));
-  }, []);
 
   const notify = (messege, type = "info") => {
     toast[type](messege, {
@@ -88,7 +79,7 @@ function App() {
           <Route
             index
             element={
-              <HomePage products={products} handleAddToCart={handleAddToCart} />
+              <HomePage handleAddToCart={handleAddToCart} />
             }
           />
           <Route

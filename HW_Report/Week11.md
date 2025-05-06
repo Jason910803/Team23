@@ -1,7 +1,11 @@
-# 作業 Week10
+# 作業 Week11
 ## 練習了哪些當週上課的主題
 1. 在後端模型中加入了 Category 類別，並以 ForeignKey 建立了產品與分類的一對多資料庫關聯
 2. 在前端加入 SearchBar 搜尋列，利用 axios 實作 AJAX 非同步搜尋功能，與 Django REST API 連動，達到無刷新更新商品結果的效果
+3. 使用Django shell加入商品（參考課程影片Django的MVC-MTV架構）。在shell中可成功查詢新增的商品，也能在admin介面看到
+![alt text](week10_img/shell.png)
+![alt text](week10_img/shell_search.png)
+![alt text](week10_img/admin.png)
 ## 額外找了與當週上課的主題相關的程式技術
 ### uwsgi & nginx
 因課程影片中只有介紹大致過程，但因為購物網站的商品資訊、圖片量都不少，考量到影片中介紹nginx的優點，對我們的網站效能應能帶來改善，因此參考官方文件 https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html 進行設置：(初始設置於 https://github.com/Jason910803/Team23/pull/11)
@@ -16,7 +20,7 @@
 
 ## 組員分工情況
 
-- 林姵均: uwsgi & nginx
-- 呂學銘: 
-- 鄭絜元: implement searchbar & build category
+- 林姵均: 30% uwsgi & nginx, Django shell
+- 呂學銘: 40% uwsgi & nginx
+- 鄭絜元: 30% implement searchbar & build category
 - 郭品謙: 

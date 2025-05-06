@@ -21,6 +21,6 @@
 ## 組員分工情況
 
 - 林姵均: 30% uwsgi & nginx, Django shell
-- 呂學銘: 40% uwsgi & nginx
+- 呂學銘: 35% uwsgi & nginx
 - 鄭絜元: 30% implement searchbar & build category
-- 郭品謙: 
+- 郭品謙: 5% nginx support to docker

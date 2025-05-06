@@ -13,7 +13,7 @@ function HomePage({ handleAddToCart }) {
   const handleSearch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:8000/api/products/?search=${query}`);
+      const res = await axios.get(`/api/products/?search=${query}`);
       setProducts(res.data);
     } catch (err) {
       console.error("❌ 搜尋失敗", err);

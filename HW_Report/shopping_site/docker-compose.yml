@@ -27,8 +27,6 @@ services:
             - node_modules/
         - action: rebuild
           path: ./react/package.json
-    ports:
-      - 3000:3000
 
   nginx:
     build:
@@ -39,4 +37,7 @@ services:
     depends_on:
       - django
       - react
-
+    develop:
+      watch:
+        - path: ./nginx
+          action: rebuild

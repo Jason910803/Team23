@@ -8,7 +8,7 @@ function Header() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
       <div className=" container">
         {/* Logo or Brand */}
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/" reloadDocument>
           購物網站
         </Link>
 

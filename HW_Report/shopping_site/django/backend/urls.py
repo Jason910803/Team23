@@ -28,6 +28,7 @@ urlpatterns = [
     # API routes go here
     path("admin/", admin.site.urls),  # Place this BEFORE the catch-all re_path
     path("api/", include(router.urls)),
+    path("contact_form/", include("contact_form.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

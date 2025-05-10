@@ -9,16 +9,34 @@ export default function ContactForm() {
         message: ''
     });
 
+    const [responseMessage, setResponseMessage] = useState('');
+
     function handleChange(e) {
         const { name, value } = e.target;
         setForm(prev => ({ ...prev, [name]: value }));
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        alert(`感謝聯絡！\n姓名：${form.name}\nEmail：${form.email}\n訊息：${form.message}`);
-        // 清空表單
-        setForm({ name: '', email: '', message: '' });
+        try {
+            const response = await fetch('http://localhost:8000/contact_form/submit/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(form),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                setResponseMessage('感謝聯絡！您的訊息已送出。');
+                setForm({ name: '', email: '', message: '' });
+            } else {
+                setResponseMessage(`發生錯誤：${data.error}`);
+            }
+        } catch (error) {
+            setResponseMessage(`發生錯誤：${error.message}`);
+        }
     }
 
     return (
@@ -26,40 +44,41 @@ export default function ContactForm() {
             <div className={styles.formGroup}>
                 <label htmlFor="name">姓名</label>
                 <input
-                id="name"
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
                 />
             </div>
 
             <div className={styles.formGroup}>
                 <label htmlFor="email">Email</label>
                 <input
-                id="email"
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
                 />
             </div>
 
             <div className={styles.formGroup}>
                 <label htmlFor="message">訊息</label>
                 <textarea
-                id="message"
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows={4}
+                    id="message"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
                 />
             </div>
 
-        <button type="submit">送出</button>
+            <button type="submit">送出</button>
+            {responseMessage && <p>{responseMessage}</p>}
         </form>
     );
 }

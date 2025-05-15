@@ -10,8 +10,8 @@ from tqdm import tqdm
 load_dotenv()
 
 # Escape username and password according to RFC 3986
-escaped_username = quote_plus("nataliepjlin")
-escaped_password = quote_plus("Altas@2025")
+escaped_username = quote_plus("nuser")
+escaped_password = quote_plus("mongo123")
 
 MONGO_URI = os.getenv("MONGO_URI", f"mongodb+srv://{escaped_username}:{escaped_password}@cluster0.ncsalyb.mongodb.net/")
 MONGO_DB = os.getenv("MONGO_DB", "DB")

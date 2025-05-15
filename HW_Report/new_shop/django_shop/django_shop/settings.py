@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'shop_app.apps.ShopAppConfig',
     'django_shop.apps.MongoAdminConfig',
     'django_shop.apps.MongoAuthConfig',
     'django_shop.apps.MongoContentTypesConfig',
@@ -76,11 +77,13 @@ WSGI_APPLICATION = 'django_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-escaped_username = quote_plus("nataliepjlin")
-escaped_password = quote_plus("Altas@2025")
+escaped_username = quote_plus("nuser")
+escaped_password = quote_plus("mongo123")
 
 DATABASES = {
-    "default": django_mongodb_backend.parse_uri(f"mongodb+srv://{escaped_username}:{escaped_password}@cluster0.ncsalyb.mongodb.net/"),
+    "default": django_mongodb_backend.parse_uri(
+        f"mongodb+srv://{escaped_username}:{escaped_password}@cluster0.ncsalyb.mongodb.net/DB"
+    ),
 }
 
 # Password validation

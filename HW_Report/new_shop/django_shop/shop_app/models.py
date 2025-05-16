@@ -22,3 +22,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class User(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    password = models.CharField(max_length=200)
+    
+    class Meta:
+        db_table = "user"
+        managed = False
+    def __str__(self):
+        return self.name

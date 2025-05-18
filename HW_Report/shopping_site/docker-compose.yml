@@ -30,13 +30,13 @@ services:
     ports:
       - 3000:3000
 
-  nginx:
-    build:
-      context: ./nginx
-    container_name: nginx_proxy
-    ports:
-      - 80:80
-    depends_on:
-      - django
-      - react
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #   container_name: nginx_proxy
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - django
+  #     - react
 

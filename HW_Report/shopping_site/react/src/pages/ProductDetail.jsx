@@ -9,7 +9,7 @@ function ProductDetail({ cart, handleAddToCart }) {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/products/${id}/`)
+    fetch(`/api/products/${id}/`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);

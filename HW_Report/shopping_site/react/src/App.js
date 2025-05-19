@@ -10,6 +10,7 @@ import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage"
 import WelcomePage from "./pages/WelcomePage"
 import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 
 import { AuthContext } from "./context/AuthContext";
@@ -145,6 +146,7 @@ function App() {
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="home" element={<HomePage handleAddToCart={handleAddToCart} />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route
             path="cart"
             element={

@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from .models import MyUser
+from .serializers import MyUserSerializer
 import logging
 
 logger = logging.getLogger(__name__)  # 可用 logger.debug/info/warning
@@ -64,3 +65,32 @@ class RegisterView(APIView):
 
         user = MyUser.objects.create(name=name, email=email, password=password)
         return Response({"message": "註冊成功！"}, status=201)
+    
+class ProfileView(APIView):
+    #permission_classes = [IsAuthenticated]  # 必須登入（session cookie）
+
+    def get(self, request):
+        username = request.session.get("username")
+        try:
+            user = MyUser.objects.get(name=username)
+        except MyUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=404)
+
+        data = MyUserSerializer(user).data
+        return Response(data)
+
+    def patch(self, request):
+        username = request.session.get("username")
+        try:
+            user = MyUser.objects.get(name=username)
+        except MyUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=404)
+
+        serializer = MyUserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            # 如果改了 name，要同步更新 session
+            if "name" in serializer.validated_data:
+                request.session["username"] = serializer.validated_data["name"]
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)

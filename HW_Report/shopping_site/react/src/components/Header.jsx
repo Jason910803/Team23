@@ -50,7 +50,7 @@ function Header() {
                   <Link className="nav-link" to="/contact">聯絡我們</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">會員資料</Link> {/* 可導向個人頁面 */}
+                  <Link className="nav-link" to="/profile">會員資料</Link> {/* 可導向個人頁面 */}
                 </li>
                 <li className="nav-item">
                   <Link

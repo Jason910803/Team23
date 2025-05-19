@@ -11,8 +11,6 @@ services:
       - 8000:8000
     volumes:
       - ./django:/app
-    networks:
-      - default
 
   react:
     image: lipcut/react_team23
@@ -32,8 +30,6 @@ services:
           path: ./react/package.json
     ports:
       - 3000:3000
-    networks:
-      - default
 
   nginx:
     build:
@@ -44,8 +40,3 @@ services:
     depends_on:
       - django
       - react
-    networks:
-      - default
-
-networks:
-  default:

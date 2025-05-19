@@ -10,7 +10,7 @@ $ sudo docker compose up --build
 $ sudo docker compose up
 ```
 
-之後前往`http://localhost`就可以看得到網頁了。
+之後前往`http://localhost:3000`就可以看得到網頁了。
 欲關閉開新的終端機跑`sudo docker compose down`或是在原本的終端機按`Ctrl-C`。
 
 要進行前端開發可以使用`docker`的`watch mode`:

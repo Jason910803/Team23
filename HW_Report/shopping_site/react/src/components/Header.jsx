@@ -41,7 +41,7 @@ function Header() {
             {isLoggedIn ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">首頁</Link> {/* 可以導向商品列表 */}
+                  <Link className="nav-link" to="/home">商品</Link> {/* 可以導向商品列表 */}
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/cart">購物車</Link>
@@ -71,7 +71,7 @@ function Header() {
                   <Link className="nav-link" to="/login">登入</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">註冊</Link>
+                  <Link className="nav-link" to="/register">註冊</Link>
                 </li>
               </>
             )}

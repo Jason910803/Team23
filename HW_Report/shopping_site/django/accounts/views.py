@@ -48,3 +48,19 @@ class WhoAmIView(APIView):
         if username:
             return Response({"username": username})
         return Response({"username": None})
+
+class RegisterView(APIView):
+    def post(self, request):
+        data = request.data
+        name = data.get("name")
+        email = data.get("email")
+        password = data.get("password")
+
+        if not name or not password:
+            return Response({"error": "缺少必要欄位"}, status=400)
+
+        if MyUser.objects.filter(name=name).exists():
+            return Response({"error": "帳號已存在"}, status=400)
+
+        user = MyUser.objects.create(name=name, email=email, password=password)
+        return Response({"message": "註冊成功！"}, status=201)

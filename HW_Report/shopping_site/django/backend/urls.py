@@ -29,8 +29,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),  # Place this BEFORE the catch-all re_path
     path("api/", include(router.urls)),
     
-    # 自訂登入 / 登出 API
+    # 自訂登入 / 登出 API / 註冊
     path("api/accounts/", include("accounts.urls")),
+    # path("accounts/", include("django_registration.backends.one_step.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

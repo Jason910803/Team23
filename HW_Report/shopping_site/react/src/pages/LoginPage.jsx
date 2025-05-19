@@ -34,7 +34,7 @@ function Login({ onLoginSuccess }) {
 
       // ✅ 登入成功後，更新 Context
       setCurrentUser({ name: username });
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.log("Login error:", err);
       setMessage("❌ 登入失敗：" + (err.response?.data?.error || "伺服器錯誤"));

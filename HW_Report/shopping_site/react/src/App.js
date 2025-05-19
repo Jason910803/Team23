@@ -9,6 +9,7 @@ import CartPage from "./pages/CartPage";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage"
 import WelcomePage from "./pages/WelcomePage"
+import RegisterPage from "./pages/RegisterPage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 
 import { AuthContext } from "./context/AuthContext";
@@ -127,9 +128,10 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route
             index
-            element={
-              <HomePage handleAddToCart={handleAddToCart} />
-            }
+            // element={
+            //   <HomePage handleAddToCart={handleAddToCart} />
+            // }
+            element={<WelcomePage />}
           />
           <Route
             path="product/:id"
@@ -140,7 +142,9 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="welcome" element={<WelcomePage />} />
+          <Route path="home" element={<HomePage handleAddToCart={handleAddToCart} />} />
+          <Route path="register" element={<RegisterPage />} />
           <Route
             path="cart"
             element={

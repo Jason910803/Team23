@@ -11,7 +11,7 @@
 
 ## 組員分工情況
 
-- 林姵均: 使用POST表單送出、使用MongoDB做為資料庫並實作fuzzy search
+- 林姵均: 使用POST表單送出、使用MongoDB做為資料庫並實作fuzzy search。編輯README說明。
 - 呂學銘: 
 - 鄭絜元: implement login, registration, and membership information funtionality
 - 郭品謙: 

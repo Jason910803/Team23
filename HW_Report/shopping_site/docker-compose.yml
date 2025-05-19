@@ -2,7 +2,8 @@ services:
   django:
     image: lipcut/django_team23
     container_name: django_team23
-    command: uwsgi --ini uwsgi.ini
+    # command: uwsgi --ini uwsgi.ini
+    command: python manage.py runserver 0.0.0.0:8000
     build:
       context: ./django
       dockerfile: Dockerfile
@@ -30,13 +31,13 @@ services:
     ports:
       - 3000:3000
 
-  nginx:
-    build:
-      context: ./nginx
-    container_name: nginx_proxy
-    ports:
-      - 80:80
-    depends_on:
-      - django
-      - react
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #   container_name: nginx_proxy
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - django
+  #     - react
 

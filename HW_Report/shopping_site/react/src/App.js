@@ -1,4 +1,5 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
@@ -6,7 +7,13 @@ import ProductDetail from "./pages/ProductDetail";
 import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import AboutPage from "./pages/AboutPage";
+import LoginPage from "./pages/LoginPage"
+import WelcomePage from "./pages/WelcomePage"
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
+
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const [cart, setCart] = useState(
@@ -15,6 +22,49 @@ function App() {
       : [],
   );
 
+  const [currentUser, setCurrentUser] = useState(null); // ✅ 加入登入狀態
+
+  // ⏳ 啟動時檢查是否已登入
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/accounts/whoami/", { withCredentials: true })
+      .then((res) => {
+        if (res.data.username) {
+          setCurrentUser({ name: res.data.username });
+        }
+      })
+      .catch((err) => {
+        console.log("未登入", err);
+      });
+  }, []);
+
+  // 🔓 登出函數
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  };
+
+  const handleLogout = () => {
+    axios
+      .post(
+        "http://localhost:8000/api/accounts/logout/",
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken")  // ✅ 加這行
+          }
+        }
+      )
+      .then(() => {
+        setCurrentUser(null);
+      })
+      .catch((err) => {
+        console.error("🚨 登出失敗", err);
+      });
+  };
+  
   localStorage.setItem("cart", JSON.stringify(cart));
 
   const notify = (messege, type = "info") => {
@@ -73,14 +123,16 @@ function App() {
   };
 
   return (
+  <AuthContext.Provider value={{ currentUser, setCurrentUser, handleLogout }}>
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
             index
-            element={
-              <HomePage handleAddToCart={handleAddToCart} />
-            }
+            // element={
+            //   <HomePage handleAddToCart={handleAddToCart} />
+            // }
+            element={<WelcomePage />}
           />
           <Route
             path="product/:id"
@@ -90,6 +142,11 @@ function App() {
           />
           <Route path="contact" element={<ContactPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="welcome" element={<WelcomePage />} />
+          <Route path="home" element={<HomePage handleAddToCart={handleAddToCart} />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route
             path="cart"
             element={
@@ -106,6 +163,7 @@ function App() {
       </Routes>
       <ToastContainer />
     </Router>
+    </AuthContext.Provider>
   );
 }
 

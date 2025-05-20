@@ -19,7 +19,7 @@ export default function ProfilePage() {
     axiosInstance
       .get("/api/accounts/profile/", { withCredentials: true })
       .then((res) => {
-        setForm({ ...form, ...res.data, password: "" });
+        setForm({ ...form, ...res.data });
       })
       .catch((err) => setMsg("讀取失敗：" + err));
     // eslint-disable-next-line
@@ -69,8 +69,11 @@ export default function ProfilePage() {
           <input
             className="form-control"
             type="password"
-            value={form.password}
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            value={""}
+            onChange={(e) => {
+              if (e.target.value !== "")
+                setForm({ ...form, password: e.target.value });
+            }}
           />
         </div>
         <button className="btn btn-primary">儲存變更</button>

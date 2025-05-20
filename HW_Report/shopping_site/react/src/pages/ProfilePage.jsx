@@ -18,7 +18,9 @@ export default function ProfilePage() {
   useEffect(() => {
     axiosInstance
       .get("/api/accounts/profile/", { withCredentials: true })
-      .then((res) => setForm({ ...form, ...res.data, password: "" }))
+      .then((res) => {
+        setForm({ ...form, ...res.data, password: "" });
+      })
       .catch((err) => setMsg("讀取失敗：" + err));
     // eslint-disable-next-line
   }, []);
@@ -32,7 +34,7 @@ export default function ProfilePage() {
       });
       setMsg("✅ 更新成功！");
       // 若改了 name，要更新全域登入狀態
-      setCurrentUser({ name: res.data.name });
+      setCurrentUser({ name: res.data.username });
     } catch (err) {
       setMsg("❌ 更新失敗：" + JSON.stringify(err.response?.data));
     }
@@ -49,7 +51,7 @@ export default function ProfilePage() {
           <label className="form-label">帳號名稱</label>
           <input
             className="form-control"
-            value={form.name}
+            value={form.username}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
         </div>

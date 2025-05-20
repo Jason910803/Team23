@@ -15,23 +15,20 @@ export default function ProfilePage() {
 
   // 讀取會員資料
   useEffect(() => {
-    axios.get("http://localhost:8000/api/accounts/profile/", { withCredentials:true })
-      .then(res => setForm({ ...form, ...res.data, password:"" }))
-      .catch(err => setMsg("讀取失敗：" + err));
+    axios
+      .get("/api/accounts/profile/", { withCredentials: true })
+      .then((res) => setForm({ ...form, ...res.data, password: "" }))
+      .catch((err) => setMsg("讀取失敗：" + err));
     // eslint-disable-next-line
   }, []);
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.patch(
-        "http://localhost:8000/api/accounts/profile/",
-        form,
-        {
-          withCredentials:true,
-          headers:{ "X-CSRFToken": getCookie("csrftoken") }
-        }
-      );
+      const res = await axios.patch("/api/accounts/profile/", form, {
+        withCredentials: true,
+        headers: { "X-CSRFToken": getCookie("csrftoken") },
+      });
       setMsg("✅ 更新成功！");
       // 若改了 name，要更新全域登入狀態
       setCurrentUser({ name: res.data.name });

@@ -7,8 +7,8 @@ import ProductDetail from "./pages/ProductDetail";
 import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage"
-import WelcomePage from "./pages/WelcomePage"
+import LoginPage from "./pages/LoginPage";
+import WelcomePage from "./pages/WelcomePage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
@@ -27,7 +27,7 @@ function App() {
   // ⏳ 啟動時檢查是否已登入
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/accounts/whoami/", { withCredentials: true })
+      .get("/api/accounts/whoami/", { withCredentials: true })
       .then((res) => {
         if (res.data.username) {
           setCurrentUser({ name: res.data.username });
@@ -48,7 +48,7 @@ function App() {
   const handleLogout = () => {
     axios
       .post(
-        "http://localhost:8000/api/accounts/logout/",
+        "/api/accounts/logout/",
         {},
         {
           withCredentials: true,
@@ -64,7 +64,7 @@ function App() {
         console.error("🚨 登出失敗", err);
       });
   };
-  
+
   localStorage.setItem("cart", JSON.stringify(cart));
 
   const notify = (messege, type = "info") => {

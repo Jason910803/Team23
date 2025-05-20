@@ -22,7 +22,7 @@ function Login({ onLoginSuccess }) {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:8000/api/accounts/login/",
+        "/api/accounts/login/",
         { username, password },
         {
           withCredentials: true,

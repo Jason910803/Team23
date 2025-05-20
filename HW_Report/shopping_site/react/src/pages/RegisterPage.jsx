@@ -21,16 +21,12 @@ export default function RegisterPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:8000/api/accounts/register/",
-        form,
-        {
-          withCredentials: true,
-          headers: {
-            "X-CSRFToken": getCookie("csrftoken"),
-          },
-        }
-      );
+      await axios.post("/api/accounts/register/", form, {
+        withCredentials: true,
+        headers: {
+          "X-CSRFToken": getCookie("csrftoken"),
+        },
+      });
       setMsg("✅ 註冊成功！即將跳轉登入頁...");
       setTimeout(() => nav("/login"), 2000);
     } catch (err) {

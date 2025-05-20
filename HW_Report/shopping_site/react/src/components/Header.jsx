@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../context/AuthContext"; // ⬅️ 引入 Context
 
 function Header() {
-  const { currentUser, handleLogout } = useContext(AuthContext);  // ⬅️ 從 Context 中取出值
+  const { currentUser, handleLogout } = useContext(AuthContext); // ⬅️ 從 Context 中取出值
   const navigate = useNavigate();
 
   const handleLogoutClick = () => {
@@ -13,7 +13,7 @@ function Header() {
     navigate("/welcome");
   };
 
-  const isLoggedIn = !!currentUser;  // 有登入就是 true
+  const isLoggedIn = !!currentUser; // 有登入就是 true
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
@@ -37,17 +37,23 @@ function Header() {
 
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-
             {isLoggedIn ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/home">商品</Link> {/* 可以導向商品列表 */}
+                  <Link className="nav-link" to="/home">
+                    商品
+                  </Link>{" "}
+                  {/* 可以導向商品列表 */}
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/cart">購物車</Link>
+                  <Link className="nav-link" to="/cart">
+                    購物車
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/contact">聯絡我們</Link>
+                  <Link className="nav-link" to="/contact">
+                    聯絡我們
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/profile">會員資料</Link> {/* 可導向個人頁面 */}
@@ -77,7 +83,12 @@ function Header() {
             )}
 
             <li className="nav-item">
-              <a className="nav-link" href="http://localhost:8000/admin" target="_blank" rel="noreferrer">
+              <a
+                className="nav-link"
+                href="/admin"
+                target="_blank"
+                rel="noreferrer"
+              >
                 後台管理
               </a>
             </li>

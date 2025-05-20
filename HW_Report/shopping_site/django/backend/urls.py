@@ -19,11 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from rest_framework import routers
-from rest_framework_simplejwt.views import (
-        TokenObtainPairView,
-        TokenRefreshView,
-      )
+from rest_framework_simplejwt.views import TokenRefreshView
 from products.views import ProductViewSet
+from .views import CookieTokenObtainPairView
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet, "products")
@@ -32,9 +30,9 @@ urlpatterns = [
     # API routes go here
     path("admin/", admin.site.urls),  # Place this BEFORE the catch-all re_path
     path("api/", include(router.urls)),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', CookieTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    
+
     # 自訂登入 / 登出 API / 註冊
     path("api/accounts/", include("accounts.urls")),
     # path("accounts/", include("django_registration.backends.one_step.urls")),

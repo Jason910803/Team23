@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django_shop.apps.MongoAdminConfig',
     'django_shop.apps.MongoAuthConfig',
     'django_shop.apps.MongoContentTypesConfig',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',

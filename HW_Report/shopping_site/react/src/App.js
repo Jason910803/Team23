@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import ProductDetail from "./pages/ProductDetail";
 import ContactPage from "./pages/ContactPage";
@@ -12,7 +13,6 @@ import WelcomePage from "./pages/WelcomePage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
-
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
@@ -53,9 +53,9 @@ function App() {
         {
           withCredentials: true,
           headers: {
-            "X-CSRFToken": getCookie("csrftoken")  // ✅ 加這行
-          }
-        }
+            "X-CSRFToken": getCookie("csrftoken"), // ✅ 加這行
+          },
+        },
       )
       .then(() => {
         setCurrentUser(null);
@@ -123,46 +123,55 @@ function App() {
   };
 
   return (
-  <AuthContext.Provider value={{ currentUser, setCurrentUser, handleLogout }}>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            // element={
-            //   <HomePage handleAddToCart={handleAddToCart} />
-            // }
-            element={<WelcomePage />}
-          />
-          <Route
-            path="product/:id"
-            element={
-              <ProductDetail cart={cart} handleAddToCart={handleAddToCart} />
-            }
-          />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="welcome" element={<WelcomePage />} />
-          <Route path="home" element={<HomePage handleAddToCart={handleAddToCart} />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route
-            path="cart"
-            element={
-              <CartPage
-                cart={cart}
-                addCart={addCart}
-                removeCart={removeCart}
-                removeRow={removeRow}
-                checkToggle={checkToggle}
-              />
-            }
-          />
-        </Route>
-      </Routes>
-      <ToastContainer />
-    </Router>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, handleLogout }}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              // element={
+              //   <HomePage handleAddToCart={handleAddToCart} />
+              // }
+              element={<WelcomePage />}
+            />
+            <Route
+              path="product/:id"
+              element={
+                <ProductDetail cart={cart} handleAddToCart={handleAddToCart} />
+              }
+            />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="welcome" element={<WelcomePage />} />
+            <Route
+              path="home"
+              element={
+                <ProtectedRoute>
+                  <HomePage handleAddToCart={handleAddToCart} />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route
+              path="cart"
+              element={
+                <ProtectedRoute>
+                  <CartPage
+                    cart={cart}
+                    addCart={addCart}
+                    removeCart={removeCart}
+                    removeRow={removeRow}
+                    checkToggle={checkToggle}
+                  />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+        </Routes>
+        <ToastContainer />
+      </Router>
     </AuthContext.Provider>
   );
 }

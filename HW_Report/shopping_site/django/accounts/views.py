@@ -38,8 +38,11 @@ class LoginView(APIView):
 @method_decorator(csrf_exempt, name='dispatch')  # 開發階段用，建議之後改成正式 CSRF 驗證
 class LogoutView(APIView):
     def post(self, request):
+        res = Response({"message": "Logged out"}, status=status.HTTP_200_OK)
+        res.delete_cookie("access_token")
+        res.delete_cookie("refresh_token")
         logout(request)
-        return Response({"message": "Logged out"}, status=status.HTTP_200_OK)
+        return res
 
 
 class WhoAmIView(APIView):

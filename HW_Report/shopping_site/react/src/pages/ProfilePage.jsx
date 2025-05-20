@@ -17,7 +17,7 @@ export default function ProfilePage() {
   // 讀取會員資料
   useEffect(() => {
     axiosInstance
-      .get("/accounts/profile/", { withCredentials: true })
+      .get("/api/accounts/profile/", { withCredentials: true })
       .then((res) => setForm({ ...form, ...res.data, password: "" }))
       .catch((err) => setMsg("讀取失敗：" + err));
     // eslint-disable-next-line

@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";  // ⬅️ 匯入 context
+import { AuthContext } from "../context/AuthContext"; // ⬅️ 匯入 context
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
+  if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
 function Login({ onLoginSuccess }) {
@@ -16,7 +16,7 @@ function Login({ onLoginSuccess }) {
   const [status, setStatus] = useState("info");
 
   const navigate = useNavigate(); // ✅ 用來導頁
-  const { setCurrentUser } = useContext(AuthContext);  // ⬅️ 從 context 取出 setCurrentUser
+  const { setCurrentUser } = useContext(AuthContext); // ⬅️ 從 context 取出 setCurrentUser
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ function Login({ onLoginSuccess }) {
           headers: {
             "X-CSRFToken": getCookie("csrftoken"),
           },
-        }
+        },
       );
 
       // ✅ 登入成功後，更新 Context
@@ -42,7 +42,6 @@ function Login({ onLoginSuccess }) {
     }
   };
 
-
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -52,7 +51,9 @@ function Login({ onLoginSuccess }) {
               <h3>使用者登入</h3>
             </div>
             <div className="card-body">
-              {message && <div className={`alert alert-${status}`}>{message}</div>}
+              {message && (
+                <div className={`alert alert-${status}`}>{message}</div>
+              )}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label className="form-label">帳號</label>
@@ -75,7 +76,9 @@ function Login({ onLoginSuccess }) {
                   />
                 </div>
                 <div className="d-grid">
-                  <button type="submit" className="btn btn-primary">登入</button>
+                  <button type="submit" className="btn btn-primary">
+                    登入
+                  </button>
                 </div>
               </form>
             </div>

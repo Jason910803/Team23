@@ -11,7 +11,7 @@ function getCookie(name) {
 
 export default function RegisterPage() {
   const [form, setForm] = useState({
-    name: "",    // ✅ 對應後端 MyUser.name
+    name: "", // ✅ 對應後端 MyUser.name
     email: "",
     password: "", // ✅ 對應後端 MyUser.password
   });
@@ -22,7 +22,6 @@ export default function RegisterPage() {
     e.preventDefault();
     try {
       await axios.post("/api/accounts/register/", form, {
-        withCredentials: true,
         headers: {
           "X-CSRFToken": getCookie("csrftoken"),
         },

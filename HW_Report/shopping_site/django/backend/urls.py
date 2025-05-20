@@ -31,7 +31,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),  # Place this BEFORE the catch-all re_path
     path("api/", include(router.urls)),
     path('api/token/', CookieTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # 自訂登入 / 登出 API / 註冊
     path("api/accounts/", include("accounts.urls")),

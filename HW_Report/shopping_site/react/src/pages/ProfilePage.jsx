@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 import axiosInstance from "../utils/axiosInstance";
 
 function getCookie(name) {
@@ -25,7 +26,7 @@ export default function ProfilePage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axiosInstance.patch("/api/accounts/profile/", form, {
+      const res = await axios.patch("/api/accounts/profile/", form, {
         withCredentials: true,
         headers: { "X-CSRFToken": getCookie("csrftoken") },
       });

@@ -157,15 +157,13 @@ function App() {
             <Route
               path="cart"
               element={
-                <ProtectedRoute>
-                  <CartPage
-                    cart={cart}
-                    addCart={addCart}
-                    removeCart={removeCart}
-                    removeRow={removeRow}
-                    checkToggle={checkToggle}
-                  />
-                </ProtectedRoute>
+                <CartPage
+                  cart={cart}
+                  addCart={addCart}
+                  removeCart={removeCart}
+                  removeRow={removeRow}
+                  checkToggle={checkToggle}
+                />
               }
             />
           </Route>

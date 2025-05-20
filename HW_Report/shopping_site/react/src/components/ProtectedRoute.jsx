@@ -6,7 +6,7 @@ function ProtectedRoute({ children }) {
   const [auth, setAuth] = useState(null);
   useEffect(() => {
     axiosInstance
-      .get("/whoami")
+      .get("/api/accounts/whoami/")
       .then(() => setAuth(true))
       .catch(() => setAuth(false));
   }, []);

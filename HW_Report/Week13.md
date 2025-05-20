@@ -1,7 +1,7 @@
-# 作業 Week11
+# 作業 Week13
 ## 練習了哪些當週上課的主題
 1. 使用POST表單送出：實作於navbar的search (可見於 `new_shop/shop_app/base.html`, `new_shop/django_shop/shop_app/templates/fuzzy_search.html`, `new_shop/django_shop/shop_app/views.py`)
-2. 使用 session 實作了 login 功能(可見於 `shopping_site/`, `sudo docker compose up --build`, `localhost:3000`)
+2. 使用 session 實作了 login and logout 功能(可見於 `shopping_site/`, `sudo docker compose up --build`, `localhost:3000`)
 3. 使用 django-registration 實作使用者註冊的功能
 4. 結合 session and Get 來顯示出登入的會員資料，以及可以修改個人資料
 5. 使用 Gemini API Key串接LLM （於 `ex/` 中），啟動socket後，與Gemini對話（如截圖）
@@ -17,5 +17,5 @@
 
 - 林姵均: 使用POST表單送出、使用MongoDB做為資料庫並實作fuzzy search、串接Gemini API、編輯README說明。
 - 呂學銘: 
-- 鄭絜元: implement login, registration, and membership information funtionality
+- 鄭絜元: Implement login, registration, and membership information funtionality.
 - 郭品謙: 

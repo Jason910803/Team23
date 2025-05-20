@@ -16,7 +16,7 @@
 
 ## 組員分工情況
 
-- 林姵均: 使用POST表單送出、使用MongoDB做為資料庫並實作fuzzy search、串接Gemini API、編輯README說明。
+- 林姵均: 50% 使用POST表單送出、使用MongoDB做為資料庫並實作fuzzy search、串接Gemini API、編輯README說明。
 - 呂學銘: 
-- 鄭絜元: Implement login, registration, and membership information funtionality.
+- 鄭絜元: 50% Implement login/logout, registration, and membership information funtionality.
 - 郭品謙: 

@@ -32,6 +32,7 @@ urlpatterns = [
     # 自訂登入 / 登出 API / 註冊
     path("api/accounts/", include("accounts.urls")),
     # path("accounts/", include("django_registration.backends.one_step.urls")),
+    path("api/products/", include("products.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -41,6 +41,9 @@ function Header() {
             {isLoggedIn ? (
               <>
                 <li className="nav-item">
+                  <Link className="nav-link" to="/smart-search">AI搜尋與推薦</Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to="/home">商品</Link> {/* 可以導向商品列表 */}
                 </li>
                 <li className="nav-item">

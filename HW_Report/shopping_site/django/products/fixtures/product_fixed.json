@@ -233,5 +233,18 @@
       "created_at": "2024-05-01T16:20:00Z",
       "category": 5
     }
+  },
+  {
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+      "name": "超大微波爐",
+      "description": "42L 智慧變頻微波爐",
+      "price": "5990",
+      "stock": 15,
+      "image": "products/large.jpg",
+      "created_at": "2024-05-01T17:00:00Z",
+      "category": 2
+    }
   }
 ]

@@ -27,26 +27,25 @@ class ProductViewSet(viewsets.ModelViewSet):
 @csrf_exempt
 def smart_search(request):
     query = request.GET.get('query', '')
+    print("Received query:", query)
     if not query:
         return JsonResponse({'results': []})
 
     # 1. Call Gemini API
     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+    if not GEMINI_API_KEY:
+        print("GEMINI_API_KEY not set !!!")
+        return JsonResponse({'error': 'Gemini API key not set'}, status=500)
     genai.configure(api_key=GEMINI_API_KEY)
     model = genai.GenerativeModel('gemini-2.0-flash')
-    # GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + GEMINI_API_KEY
-    # prompt = f"Given the user query: '{query}', list 3-5 keywords or product types that would be relevant for an e-commerce search. Only output a comma-separated list."
-    # payload = {
-    #     "contents": [{"parts": [{"text": prompt}]}]
-    # }
     user_message = f"根據用戶查詢：'{query}'，列出3-5個關鍵字或產品類型，這些關鍵字或產品類型與網購商品搜索相關。僅輸出半形逗號分隔的列表。"
     try:
-        response = model.generate_content(
+        result = model.generate_content(
             user_message,
             generation_config={"response_mime_type": "text/plain"},
         )
-        response.raise_for_status()
-        gemini_text = response.json()['candidates'][0]['content']['parts'][0]['text']
+        print("Gemini API response:", result)
+        gemini_text = result.text
         keywords = [kw.strip() for kw in gemini_text.split(',') if kw.strip()]
     except Exception as e:
         return JsonResponse({'error': 'Gemini API error', 'details': str(e)}, status=500)

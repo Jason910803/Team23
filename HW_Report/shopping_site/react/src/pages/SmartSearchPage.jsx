@@ -10,7 +10,9 @@ export default function SmartSearchPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/smart-search/?query=${encodeURIComponent(query)}`);
+      console.log("Searching for:", query);
+      const res = await fetch(`/api/products/smart-search/?query=${encodeURIComponent(query)}`);
+      console.log("Response:", res);
       if (!res.ok) throw new Error("搜尋失敗");
       const data = await res.json();
       setResults(data.results || []);
@@ -55,7 +57,10 @@ export default function SmartSearchPage() {
               <ul className="list-group">
                 {results.map((item) => (
                   <li className="list-group-item" key={item.id}>
-                    <strong>{item.name}</strong>
+                    <a href={`/product/${item.id}`} className="text-decoration-none">
+                        {item.name}
+                    </a>
+
                     <div className="text-muted small">{item.category}</div>
                     <div>{item.description}</div>
                     <div className="fw-bold">${item.price}</div>

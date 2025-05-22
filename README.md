@@ -24,6 +24,14 @@ $ sudo docker compose up --watch
 ```
 或是在原本開啓的終端機按`W`鍵開關。
 
+### 設定 Gemini api key
+在專案根目錄（與 `docker-compose.yml` 同一層）新增一個名為 `.env` 的檔案，內容如下：
+
+```
+GEMINI_API_KEY=your_actual_gemini_api_key
+```
+這樣 Docker 就會自動讀取 .env 並注入到 container 的環境變數中。
+
 ### docker image連結
 前端\(react\):  https://hub.docker.com/r/lipcut/react_team23
 

@@ -12,6 +12,7 @@ import WelcomePage from "./pages/WelcomePage"
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
+import SmartSearchPage from "./pages/SmartSearchPage";
 
 import { AuthContext } from "./context/AuthContext";
 
@@ -159,6 +160,7 @@ function App() {
               />
             }
           />
+          <Route path="/smart-search" element={<SmartSearchPage />} />
         </Route>
       </Routes>
       <ToastContainer />

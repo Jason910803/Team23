@@ -11,7 +11,7 @@ export default function SmartSearchPage() {
     setError(null);
     try {
       console.log("Searching for:", query);
-      const res = await fetch(`http://localhost:8000/api/products/smart-search/?query=${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/products/smart-search/?query=${encodeURIComponent(query)}`);
       console.log("Response:", res);
       if (!res.ok) throw new Error("搜尋失敗");
       const data = await res.json();

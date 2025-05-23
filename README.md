@@ -24,13 +24,20 @@ $ sudo docker compose up --watch
 ```
 或是在原本開啓的終端機按`W`鍵開關。
 
-### 設定 Gemini api key
+### API Key設定
+以下`your_actual_gemini_api_key`與`your_actual_weather_api_key`皆需替換成真實Key值，可至 https://aistudio.google.com/u/2/apikey 與 https://openweathermap.org/api 申請。
+#### Gemini
 在專案根目錄（與 `docker-compose.yml` 同一層）新增一個名為 `.env` 的檔案，內容如下：
 
 ```
 GEMINI_API_KEY=your_actual_gemini_api_key
 ```
 這樣 Docker 就會自動讀取 .env 並注入到 container 的環境變數中。
+#### OpenWeatherMap
+在同樣的`.env`檔內，加入
+```
+WEATHER_API_KEY=your_actual_weather_api_key
+```
 
 ### docker image連結
 前端\(react\):  https://hub.docker.com/r/lipcut/react_team23
@@ -39,7 +46,7 @@ GEMINI_API_KEY=your_actual_gemini_api_key
 
 ## new_shop
 ### 網站介紹
-使用[Google Chrome Lab的資料](https://github.com/GoogleChromeLabs/sample-pie-shop/blob/master/src/data/products.json)實作fuzzy search，讓使用者即使打錯一些字也能找到想輸入的資料
+使用[Google Chrome Lab的資料](https://github.com/GoogleChromeLabs/sample-pie-shop/blob/master/src/data/products.json)串接MongoDB實作fuzzy search，讓使用者即使打錯一些字也能找到想輸入的資料
 ### 使用方法
 `$ cd HW_Report/new_shop/django_shop`
 `python manage.py runserver`

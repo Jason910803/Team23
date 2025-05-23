@@ -40,8 +40,25 @@ function Header() {
 
             {isLoggedIn ? (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/smart-search">AI搜尋與推薦</Link>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="/smart-search"
+                    id="userDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    AI智慧推薦
+                  </a>
+                  <ul className="dropdown-menu" aria-labelledby="userDropdown">
+                    <li>
+                      <Link className="dropdown-item" to="/smart-search">根據敘述推薦</Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/weather">根據天氣推薦</Link>
+                    </li>
+                  </ul>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/home">商品</Link> {/* 可以導向商品列表 */}

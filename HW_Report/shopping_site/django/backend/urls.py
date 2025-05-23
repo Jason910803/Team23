@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from rest_framework import routers
-from products.views import ProductViewSet, smart_search
+from products.views import ProductViewSet, smart_search, weather_recommendation
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet, "products")
@@ -28,6 +28,8 @@ urlpatterns = [
     # API routes go here
     path("admin/", admin.site.urls),  # Place this BEFORE the catch-all re_path
     path("api/products/smart-search/", smart_search, name="smart_search"),
+    path("api/products/weather-recommendation/", weather_recommendation, name="weather_recommendation"),
+    path("api/weather/", include("weather.urls")),
     path("api/", include(router.urls)),
     
     # 自訂登入 / 登出 API / 註冊

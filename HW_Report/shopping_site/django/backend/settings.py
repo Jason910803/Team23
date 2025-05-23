@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "products",
     "accounts",
     'django_registration',
+    'weather',
 ]
 
 MIDDLEWARE = [

@@ -28,3 +28,6 @@ yarn-error.log*
 .venv
 .env
 .python-version
+
+*.pem
+*.tar.gz

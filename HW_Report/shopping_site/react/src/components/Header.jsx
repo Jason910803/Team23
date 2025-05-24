@@ -16,7 +16,7 @@ function Header() {
   const isLoggedIn = !!currentUser;  // 有登入就是 true
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top px-3">
       <div className="container">
         <Link className="navbar-brand" to="/welcome">
           購物網站
@@ -57,6 +57,9 @@ function Header() {
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/weather">根據天氣推薦</Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/image-search">根據圖片推薦</Link>
                     </li>
                   </ul>
                 </li>

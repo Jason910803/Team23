@@ -1,19 +1,33 @@
 import React, { useState } from "react";
 
-export default function SmartSearchPage() {
-  const [query, setQuery] = useState("");
+export default function ImageSearchPage() {
+  const [imageFile, setImageFile] = useState(null);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSearch = async () => {
+  const handleImageChange = (e) => {
+    setImageFile(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!imageFile) return;
+
     setLoading(true);
     setError(null);
+    setResults([]);
+
     try {
-      console.log("Searching for:", query);
-      const res = await fetch(`/api/products/smart-search/?query=${encodeURIComponent(query)}`);
-      console.log("Response:", res);
-      if (!res.ok) throw new Error("搜尋失敗");
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
+      const res = await fetch("/api/products/image-search/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error("圖片搜尋失敗");
       const data = await res.json();
       setResults(data.results || []);
     } catch (err) {
@@ -23,31 +37,23 @@ export default function SmartSearchPage() {
     }
   };
 
-  const handleInputChange = (e) => setQuery(e.target.value);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (query.trim()) handleSearch();
-  };
-
   return (
     <div className="container mt-5">
       <div className="card shadow-sm">
         <div className="card-body">
-          <h2 className="card-title text-center mb-4">AI 智慧搜尋</h2>
+          <h2 className="card-title text-center mb-4">以圖搜商品</h2>
           <p className="text-center text-muted mb-4">
-            輸入商品關鍵字，體驗 AI 智慧搜尋功能。
+            上傳一張商品圖片，體驗 AI 以圖搜商品功能。
           </p>
           <form className="text-center" onSubmit={handleSubmit}>
             <input
-              type="text"
+              type="file"
+              accept="image/*"
               className="form-control mb-3"
-              placeholder="請輸入商品關鍵字或描述"
-              name="query"
-              value={query}
-              onChange={handleInputChange}
+              onChange={handleImageChange}
               disabled={loading}
             />
-            <button className="btn btn-primary" type="submit" disabled={loading}>
+            <button className="btn btn-primary" type="submit" disabled={loading || !imageFile}>
               {loading ? "搜尋中..." : "搜尋"}
             </button>
           </form>
@@ -57,15 +63,15 @@ export default function SmartSearchPage() {
               <ul className="list-group">
                 {results.map((item) => (
                   <li
-                  className="list-group-item d-flex align-items-start"  /* ❶ 讓圖片文字同一行 */
-                  key={item.id}
+                    className="list-group-item d-flex align-items-start"  /* ❶ 讓圖片文字同一行 */
+                    key={item.id}
                   >
                     {/* ❷ 商品縮圖 */}
                     <img
-                        src={item.image}        // 後端傳回的 URL
-                        alt={item.name}
-                        className="img-thumbnail me-3"
-                        style={{ width: "80px", height: "80px", objectFit: "cover" }}
+                    src={item.image}        // 後端傳回的 URL
+                    alt={item.name}
+                    className="img-thumbnail me-3"
+                    style={{ width: "80px", height: "80px", objectFit: "cover" }}
                     />
 
                     {/* ❸ 文字資訊包一個 div */}

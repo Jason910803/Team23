@@ -7,7 +7,8 @@
 $ cd HW_Report/shopping_site
 
 # 在本地端建立image
-$ sudo docker compose up --build
+$ sudo docker compose build --no-cache
+$ sudo docker compose up
 
 # 從docker pull已建立好的image
 $ sudo docker compose up
@@ -38,6 +39,13 @@ GEMINI_API_KEY=your_actual_gemini_api_key
 ```
 WEATHER_API_KEY=your_actual_weather_api_key
 ```
+
+### 以圖搜商品
+若有新加入的產品, 跑以下的指令可以產生圖片的 embedding 加到 database 裡
+```
+sudo docker compose run --rm django python manage.py build_image_index
+```
+原理就是先用 CLIP 提取 image imbedding 存回 database，然後用戶上傳圖片後也對圖片取出 embedding 再跟資料庫的圖片 embedding 算 cosine similarity 比對相似度，最後回傳 top k 的商品
 
 ### docker image連結
 前端\(react\):  https://hub.docker.com/r/lipcut/react_team23

@@ -8,6 +8,15 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 import os
 import google.generativeai as genai
+# For image searching
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from PIL import Image
+import torch
+from sentence_transformers import SentenceTransformer
+
+clip_model = SentenceTransformer("clip-ViT-B-32")
+clip_model.eval()
 
 # Create your views here.
 class ProductSerializer(serializers.ModelSerializer):
@@ -112,3 +121,43 @@ def weather_recommendation(request):
         for p in products
     ]
     return JsonResponse({'results': data})
+
+@csrf_exempt 
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def image_search(request):
+    img_file = request.FILES.get("image")
+    if not img_file:
+        return JsonResponse({"error": "No image uploaded"}, status=400)
+
+    # 1) 取得查詢圖片向量
+    query_emb = clip_model.encode(
+        Image.open(img_file).convert("RGB"),
+        device="cpu",
+        normalize_embeddings=True,
+    )
+    query_emb = torch.tensor(query_emb)          # shape (512,)
+
+    # 2) 抓出所有已建索引的商品向量
+    products = Product.objects.filter(image_embedding__isnull=False)
+    if not products:
+        return JsonResponse({"results": []})
+
+    embeddings = torch.tensor([p.image_embedding for p in products])  # (N,512)
+    scores = torch.mv(embeddings, query_emb)  # 內積 = cosine，相容 torch 2.x
+    topk = torch.topk(scores, k=min(20, len(products)))  # 取前 20
+
+    # 3) 整理回傳
+    result = []
+    for idx in topk.indices.tolist():
+        p = products[idx]
+        result.append({
+            "id": p.id,
+            "name": p.name,
+            "description": p.description,
+            "price": str(p.price),
+            "image": p.image.url if p.image else None,
+            "category": p.category.name if p.category else None,
+            "score": float(scores[idx]),
+        })
+    return JsonResponse({"results": result})

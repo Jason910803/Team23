@@ -40,6 +40,86 @@
     }
   },
   {
+    "model": "products.category",
+    "pk": 6,
+    "fields": {
+      "name": "食品",
+      "description": "各式美味食品"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 7,
+    "fields": {
+      "name": "運動",
+      "description": "運動器材與服飾"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 8,
+    "fields": {
+      "name": "家居",
+      "description": "家居用品與裝飾"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 9,
+    "fields": {
+      "name": "書籍",
+      "description": "各類書籍與雜誌"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 10,
+    "fields": {
+      "name": "玩具",
+      "description": "兒童玩具與遊戲"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 11,
+    "fields": {
+      "name": "寵物用品",
+      "description": "寵物食品與配件"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 12,
+    "fields": {
+      "name": "汽車用品",
+      "description": "汽車配件與裝飾"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 13,
+    "fields": {
+      "name": "旅遊",
+      "description": "旅遊用品與配件"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 14,
+    "fields": {
+      "name": "健康",
+      "description": "健康產品與補品"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 15,
+    "fields": {
+      "name": "生活用品",
+      "description": "日常生活所需用品"
+    }
+  },
+  {
     "model": "products.product",
     "pk": 1,
     "fields": {
@@ -245,6 +325,45 @@
       "image": "products/large.jpg",
       "created_at": "2024-05-01T17:00:00Z",
       "category": 2
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+      "name": "雨傘",
+      "description": "自動開關，防風設計。作為雨具或遮陽傘、洋傘都很合適。",
+      "price": "299",
+      "stock": 100,
+      "image": "products/umbrella.jpg",
+      "created_at": "2024-05-01T17:10:00Z",
+      "category": 15
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 18,
+    "fields": {
+      "name": "拖鞋",
+      "description": "透氣舒適，適合居家穿著。作為室內拖鞋、浴室拖鞋或沙灘拖鞋都很合適。",
+      "price": "399",
+      "stock": 20,
+      "image": "products/slippers.webp",
+      "created_at": "2024-05-01T17:20:00Z",
+      "category": 15
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 19,
+    "fields": {
+      "name": "雨鞋",
+      "description": "防水設計，適合雨天穿著。可用於戶外活動或日常穿著。您最佳的雨具選擇。",
+      "price": "390",
+      "stock": 15,
+      "image": "products/rain_boots.jpg",
+      "created_at": "2024-05-01T17:25:00Z",
+      "category": 15
     }
   }
 ]

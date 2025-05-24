@@ -365,5 +365,265 @@
       "created_at": "2024-05-01T17:25:00Z",
       "category": 15
     }
+  },
+  {
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+      "name": "火辣雞肉風味鐵板炒麵 (杯裝) (原味/奶油白醬風味/起司風味/炸醬風味) 韓國辣雞麵 火雞麵 辣炒泡麵",
+      "description": "經典辣炒泡麵 搭配鮮美雞肉風味\\r\\n",
+      "price": 49,
+      "stock": 20,
+      "image": "products/000001_1732512992.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+      "name": "印尼炒麵/撈麵/乾麵/拌麵/炒泡麵(原味) 85gx1入",
+      "description": "【營多Indomie】印尼炒麵/撈麵/乾麵/拌麵/炒泡麵(原味) 85gx1入\\r\\n",
+      "price": 18,
+      "stock": 20,
+      "image": "products/000001_1624621574.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 22,
+    "fields": {
+      "name": "泡麵-味味A排骨雞湯碗麵(1碗)",
+      "description": "泡麵-味味A排骨雞湯碗麵(1碗)\\r\\n★厚∼有夠香！\r\n★湯頭最純、最香濃的經典口味\r\n★經典的好滋味\r\n★約90公克 碗",
+      "price": 21,
+      "stock": 20,
+      "image": "products/000001_1689673883.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 23,
+    "fields": {
+      "name": "火辣雞肉風味鐵板炒麵 (5入/袋裝) (原味/奶油白醬風味/起司風味/炸醬風味) 韓國辣雞麵 火雞麵 辣炒泡麵",
+      "description": "經典辣炒泡麵 搭配鮮美雞肉風味\\r\\n",
+      "price": 315,
+      "stock": 20,
+      "image": "products/000001_1731900796.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 24,
+    "fields": {
+      "name": "浪味炒麵 南洋風味 經典人氣印尼炒泡麵 必吃原裝進口乾拌麵",
+      "description": "▼一口到南洋▼ 【旺旺】 浪味炒麵 南洋風味 （經典人氣印尼炒泡麵 必吃原裝進口乾拌麵）\\r\\n浪味食堂隨時開張！  印尼調味ＸＱ彈面體的美味體驗\r\n★來自印尼的道地炒麵，絕對南洋風味\r\n★印尼佐料＋Ｑ彈麵體，吃過都說好\r\n★追劇宵夜必備神器",
+      "price": 79,
+      "stock": 20,
+      "image": "products/000001_1525958001.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 25,
+    "fields": {
+      "name": "火辣雞肉風味鐵板炒麵 (單包) (原味/奶油白醬風味/起司風味/炸醬風味) 韓國辣雞麵 火雞麵 辣炒泡麵",
+      "description": "經典辣炒泡麵 搭配鮮美雞肉風味\\r\\n",
+      "price": 64,
+      "stock": 20,
+      "image": "products/000001_1732171083.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 26,
+    "fields": {
+      "name": "元祖拉麵 120g  韓國史上第一款拉麵！(元祖泡麵 / 韓國泡麵 / 韓式泡麵 / 韓國湯麵 / 韓國拉麵)",
+      "description": "韓國道地微辣風味 暖心濃郁湯頭\\r\\n",
+      "price": 49,
+      "stock": 20,
+      "image": "products/000001_1741328611.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 27,
+    "fields": {
+      "name": "味味A炒泡麵 爆香三杯風味(8碗/箱)",
+      "description": "【味丹】味味A炒泡麵 爆香三杯風味(8碗/箱)\\r\\n",
+      "price": 260,
+      "stock": 20,
+      "image": "products/000001_1741776469.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 28,
+    "fields": {
+      "name": "味味A炒泡麵 香辣炸醬風味(8碗/箱)",
+      "description": "【味丹】味味A炒泡麵 香辣炸醬風味(8碗/箱)\\r\\n",
+      "price": 260,
+      "stock": 20,
+      "image": "products/000001_1741776439.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 29,
+    "fields": {
+      "name": "麻辣湯麵泡麵(全素)82gx5入",
+      "description": "【崇德發】麻辣湯麵泡麵(全素)82gx5入\\r\\n天然鮮蔬好濃郁\r\n麻辣湯頭最夠味~\r\n純素風味，輕鬆上桌!!",
+      "price": 85,
+      "stock": 20,
+      "image": "products/000001_1633332693.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 30,
+    "fields": {
+      "name": "湯麵/杯麵/拌湯麵/泡麵 【Handy Hao Hao】酸辣蝦味杯麵 68g",
+      "description": "【Handy Hao Hao 好好】酸辣蝦味杯麵 68g  拌湯麵/湯泡麵/湯麵\\r\\n",
+      "price": 30,
+      "stock": 20,
+      "image": "products/000001_1724665771.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 31,
+    "fields": {
+      "name": "藥膳湯麵泡麵(全素)79gx30入/箱",
+      "description": "崇德發藥膳湯麵泡麵(全素)79gx30入/箱\\r\\n麻油好濃郁\r\n藥膳湯頭最養生~\r\n純素風味，輕鬆上桌!!",
+      "price": 457,
+      "stock": 20,
+      "image": "products/000001_1633341766.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 32,
+    "fields": {
+      "name": "【來一客】 風味杯x3入/箱(鮮蝦魚板/牛肉蔬菜/韓式泡菜/京燉肉骨/川辣牛肉/肉燥菠菜)",
+      "description": "【來一客】 風味杯x3入(鮮蝦魚板/牛肉蔬菜/韓式泡菜/京燉肉骨/川辣牛肉/肉燥菠菜)\\r\\n",
+      "price": 67,
+      "stock": 20,
+      "image": "products/000001_1725342836.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 33,
+    "fields": {
+      "name": "【來一客】 風味杯x12入/箱(鮮蝦魚板/牛肉蔬菜/韓式泡菜/京燉肉骨/川辣牛肉/肉燥菠菜)",
+      "description": "【來一客】 風味杯x12入/箱(鮮蝦魚板/牛肉蔬菜/韓式泡菜/京燉肉骨/川辣牛肉/肉燥菠菜)\\r\\n",
+      "price": 269,
+      "stock": 20,
+      "image": "products/000001_1745308875.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 34,
+    "fields": {
+      "name": "【滿漢大餐】 袋麵x3入/袋(蔥燒牛肉麵/麻辣鍋牛肉麵/珍味牛肉麵/蔥燒豬肉麵)",
+      "description": "【滿漢大餐】 袋麵x3入/袋(蔥燒牛肉麵/麻辣鍋牛肉麵/珍味牛肉麵/蔥燒豬肉麵)\\r\\n",
+      "price": 148,
+      "stock": 20,
+      "image": "products/000001_1725521122.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 35,
+    "fields": {
+      "name": "【阿Q桶麵 】風味桶3入/組（雞汁排骨/紅椒牛肉/生猛海鮮/韓式泡菜/蒜香珍肉)",
+      "description": "【阿Q桶麵 】風味桶3入/組（雞汁排骨/紅椒牛肉/生猛海鮮/韓式泡菜/蒜香珍肉)\\r\\n",
+      "price": 96,
+      "stock": 20,
+      "image": "products/000001_1725515037.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 36,
+    "fields": {
+      "name": "合味道杯麵(口味多選/杯)",
+      "description": "《日清》合味道杯麵(口味多選/杯)\\r\\n",
+      "price": 36,
+      "stock": 20,
+      "image": "products/000001_1733991995.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 37,
+    "fields": {
+      "name": "麵 肉燥風味特大號(5入)",
+      "description": "統一麵 肉燥風味特大號(5入)\\r\\n傳統熟悉的肉燥香味，在颱風夜裡、異鄉求學時，一碗親切的「統一麵肉燥風味麵」帶來家鄉般的溫暖\r\n\r\n▃▅參考其他口味▅▃ \r\n→【肉燥風味】\r\n→【蔥燒牛肉風味】\r\n→【肉骨茶風味】\r\n→【鮮蝦風味】",
+      "price": 85,
+      "stock": 20,
+      "image": "products/000001_1689825336.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 38,
+    "fields": {
+      "name": "風味杯麵(口味多選/杯)",
+      "description": "ACECOOK 風味杯麵(口味多選/杯)\\r\\n",
+      "price": 28,
+      "stock": 20,
+      "image": "products/000001_1725867392.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 39,
+    "fields": {
+      "name": "【滿漢大餐】 碗麵x2入/組",
+      "description": "【滿漢大餐】 碗麵x6入/箱(蔥燒牛肉麵/麻辣鍋牛肉麵/珍味牛肉麵/蔥燒豬肉麵)\\r\\n",
+      "price": 109,
+      "stock": 20,
+      "image": "products/000001_1725520035.jpg",
+      "created_at": "2024-05-01T13:20:00Z",
+      "category": 6
+    }
   }
 ]

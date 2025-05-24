@@ -36,10 +36,28 @@ for item in data['prods']:
             "price": item['price'],
             "stock": 20,
             "image": f"products/{image_filename}",
-            "created_at": item['publishDate'],
-            "category": item['cateId'],
+            "created_at": "2024-05-01T13:20:00Z",
+            "category": 6
         }
     })
 
-with open('noodle_simple.json', 'w', encoding='utf-8') as f:
-    json.dump(new_list, f, ensure_ascii=False, indent=2)
+# Append new_list directly to product_fixed.json
+product_fixed_path = os.path.join(os.path.dirname(__file__), 'shopping_site', 'django', 'products', 'fixtures', 'product_fixed.json')
+with open(product_fixed_path, 'r', encoding='utf-8') as pf:
+    product_fixed = json.load(pf)
+
+# Find the max integer pk in product_fixed
+max_pk = 0
+for entry in product_fixed:
+    if entry.get("model") == "products.product":
+        pk = entry.get("pk")
+        if isinstance(pk, int) and pk > max_pk:
+            max_pk = pk
+
+# Assign new integer pk to each new product
+for i, item in enumerate(new_list):
+    item["pk"] = max_pk + i + 1
+
+product_fixed.extend(new_list)
+with open(product_fixed_path, 'w', encoding='utf-8') as pf:
+    json.dump(product_fixed, pf, ensure_ascii=False, indent=2)

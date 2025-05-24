@@ -58,6 +58,9 @@ function Header() {
                     <li>
                       <Link className="dropdown-item" to="/weather">根據天氣推薦</Link>
                     </li>
+                    <li>
+                      <Link className="dropdown-item" to="/image-search">根據圖片推薦</Link>
+                    </li>
                   </ul>
                 </li>
                 <li className="nav-item">

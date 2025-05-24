@@ -65,8 +65,8 @@ function ProductDetail({ cart, handleAddToCart }) {
           ) : (
             <span className="input-group-text">缺貨中</span>
           )}
-          <Link to="/" className="btn btn-secondary" role="button">
-            返回首頁
+          <Link to="/home" className="btn btn-secondary" role="button">
+            返回商品頁
           </Link>
         </div>
       </div>

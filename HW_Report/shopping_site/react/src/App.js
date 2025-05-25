@@ -148,7 +148,6 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="login" element={<LoginPage />} />
-          {/* <Route path="spin" element={<SpinPage />} /> */}
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="home" element={<HomePage handleAddToCart={handleAddToCart} />} />
           <Route path="register" element={<RegisterPage />} />

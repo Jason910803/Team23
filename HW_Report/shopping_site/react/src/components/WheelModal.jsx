@@ -8,7 +8,7 @@ const WheelModal = ({ open, onClose }) => {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <button className={styles.closeBtn} onClick={onClose}>×</button>
-        <h2>幸運轉盤</h2>
+        <h2>每日優惠</h2>
         <Wheel />
       </div>
     </div>

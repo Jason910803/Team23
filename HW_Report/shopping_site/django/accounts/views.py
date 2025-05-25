@@ -65,7 +65,7 @@ class RegisterView(APIView):
         if MyUser.objects.filter(name=name).exists():
             return Response({"error": "帳號已存在"}, status=400)
 
-        user = MyUser.objects.create(name=name, email=email, password=password)
+        user = MyUser.objects.create(name=name, email=email, password=password, spin_chances=1)
         return Response({"message": "註冊成功！"}, status=201)
     
 class ProfileView(APIView):

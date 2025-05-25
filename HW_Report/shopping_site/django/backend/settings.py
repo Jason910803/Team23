@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "accounts",
     'django_registration',
     'weather',
+    "wheel",
 ]
 
 MIDDLEWARE = [

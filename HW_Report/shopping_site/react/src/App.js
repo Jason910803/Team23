@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import ProductDetail from "./pages/ProductDetail";
 import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage"
 import WelcomePage from "./pages/WelcomePage"
@@ -163,6 +164,15 @@ function App() {
           />
           <Route path="/smart-search" element={<SmartSearchPage />} />
           <Route path="/weather" element={<WeatherPage />} />
+          <Route
+            path="checkout"
+            element={
+              <CheckoutPage
+                cart={cart}
+                removeRow={removeRow}
+              />
+            }
+          />
         </Route>
       </Routes>
       <ToastContainer />

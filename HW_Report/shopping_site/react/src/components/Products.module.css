@@ -11,7 +11,7 @@
 .categoryBlock {
     margin-bottom: 3rem;
 }
-  
+
 /* 分類標題 */
 .categoryTitle {
     font-size: 1.5rem;
@@ -22,7 +22,6 @@
     background-color: #fdf5e6; /* 淺藍色底 */
     border-radius: 4px;
 }
-  
 
 /* 商品橫向排列 */
 .productGrid {
@@ -85,4 +84,8 @@ button:hover {
     font-weight: bold;
     color: crimson;
     margin-top: 1rem;
+}
+
+h2 {
+    color: black;
 }

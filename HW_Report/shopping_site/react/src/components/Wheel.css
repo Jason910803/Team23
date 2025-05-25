@@ -1,0 +1,127 @@
+/* c:/Users/user/Team23/HW_Report/shopping_site/react/src/components/Wheel.css */
+.wheel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.wheel-assembly {
+  position: relative;
+  width: 300px; /* 您可以根據需要調整大小 */
+  height: 300px; /* 您可以根據需要調整大小 */
+  margin-bottom: 25px;
+}
+
+.wheel-shadow {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px rgba(0,0,0,0.05), /* 外圈柔和陰影 */
+              inset 0 0 15px rgba(0,0,0,0.1); /* 內圈陰影增加深度感 */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #4A4A4A; /* 輪盤邊框 */
+  box-sizing: border-box;
+  background: #f8f8f8; /* 底色，獎品區塊會覆蓋於其上 */
+}
+
+.segment {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform-origin: 0% 50%; /* 從左側中心點旋轉 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 為區塊間添加細微邊界，此邊界會隨區塊傾斜 */
+  border-right: 1px solid rgba(0,0,0,0.15);
+  box-sizing: border-box;
+}
+
+.segment-label {
+  display: block;
+  font-weight: bold;
+  font-size: 13px; /* 可根據輪盤大小調整 */
+  /* 將文字從中心向外推移，可依據輪盤大小和文字長度調整 */
+  /* 對於徑向文字，這個屬性效果是沿著文字旋轉後的基線移動 */
+  padding-left: 20%; 
+  text-align: center;
+  white-space: nowrap; /* 如果獎品名稱較短，防止換行 */
+  /* color 和 textShadow 由 JSX 中的 inline style 提供 */
+  /* transform 由 JSX 中的 inline style 提供 */
+  user-select: none; /* 防止文字被選取 */
+}
+
+.pointer-container {
+  position: absolute;
+  top: -12px; /* 指針位於輪盤上方，可調整 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.3)); /* 指針陰影 */
+}
+
+.pointer-svg {
+  width: 35px; /* 指針寬度 */
+  height: 45px; /* 指針高度 */
+}
+
+.pointer-svg polygon {
+  /* fill 和 stroke 由 JSX 中的屬性提供，這裡可以留空或設置預設 */
+}
+
+.spin-btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #e74c3c; /* 與指針顏色匹配 */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.spin-btn:disabled {
+  background-color: #cccccc;
+  color: #777777;
+  cursor: not-allowed;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.spin-btn:hover:not(:disabled) {
+  background-color: #c0392b; /* 滑鼠懸停時加深顏色 */
+}
+
+.spin-btn:active:not(:disabled) {
+  transform: translateY(1px); /* 按下時的微小位移效果 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.result {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+  padding: 12px 18px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}

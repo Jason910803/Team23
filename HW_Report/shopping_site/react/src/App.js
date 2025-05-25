@@ -8,14 +8,15 @@ import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage"
-import WelcomePage from "./pages/WelcomePage"
+import LoginPage from "./pages/LoginPage";
+import WelcomePage from "./pages/WelcomePage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import SmartSearchPage from "./pages/SmartSearchPage";
 import WeatherPage from "./pages/WeatherPage";
 import ImageSearchPage from "./pages/ImageSearchPage";
+import SpinPage from "./pages/SpinPage";
 
 import { AuthContext } from "./context/AuthContext";
 
@@ -147,6 +148,7 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="login" element={<LoginPage />} />
+          {/* <Route path="spin" element={<SpinPage />} /> */}
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="home" element={<HomePage handleAddToCart={handleAddToCart} />} />
           <Route path="register" element={<RegisterPage />} />

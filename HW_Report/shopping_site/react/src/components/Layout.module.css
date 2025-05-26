@@ -1,11 +1,11 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* 讓 footer 可以貼到底 */
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 讓 footer 可以貼到底 */
+}
   
-  .main {
-    flex: 1; /* 撐開中間區域，讓 header + footer 不會擠在一起 */
-    padding: 3rem;
-  }
-  
+.main {
+  flex: 1; /* 撐開中間區域，讓 header + footer 不會擠在一起 */
+  padding: 3rem;
+  padding-top: 100px; /* 為了不讓內容被 header 擋住，建議加大一點 */
+}

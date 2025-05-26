@@ -18,6 +18,7 @@ import WeatherPage from "./pages/WeatherPage";
 import ImageSearchPage from "./pages/ImageSearchPage";
 // import SpinPage from "./pages/SpinPage";
 
+import MixSearchPage from "./pages/MixSearchPage";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
@@ -176,6 +177,7 @@ function App() {
             }
           />
           <Route path="/image-search" element={<ImageSearchPage />} />
+          <Route path="/mix-search" element={<MixSearchPage />} />
         </Route>
       </Routes>
       <ToastContainer />

@@ -25,6 +25,12 @@ $ sudo docker compose up --watch
 ```
 或是在原本開啓的終端機按`W`鍵開關。
 
+### 注意事項
+因為現在不再追蹤 `db.sqlite3`，而是根據 `migrations` 自動建立，因此若大家本地的資料庫有落後，需要跑以下指令確保能正常運行功能
+```
+sudo docker compose run --rm django python manage.py makemigrations
+sudo docker compose run --rm django python manage.py migrate
+```
 ### API Key設定
 以下`your_actual_gemini_api_key`與`your_actual_weather_api_key`皆需替換成真實Key值，可至 https://aistudio.google.com/u/2/apikey 與 https://openweathermap.org/api 申請。
 #### Gemini
@@ -46,6 +52,9 @@ WEATHER_API_KEY=your_actual_weather_api_key
 sudo docker compose run --rm django python manage.py build_image_index
 ```
 原理就是先用 CLIP 提取 image imbedding 存回 database，然後用戶上傳圖片後也對圖片取出 embedding 再跟資料庫的圖片 embedding 算 cosine similarity 比對相似度，最後回傳 top k 的商品
+
+- 若發現搜尋不出結果，可能是因為商品的 embedding 還沒有建立，可以去後台看商品的 embedding 是不是 null，是的話跑上面的指令就可以建立了
+- 因為現在是執行第一次圖片比對後才把 model load 進來，因此第一次搜尋會需要等一下，好處是 `docker compose up` 時會快很多
 
 ### docker image連結
 前端\(react\):  https://hub.docker.com/r/lipcut/react_team23

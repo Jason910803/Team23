@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import WheelModal from "../components/WheelModal";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import Products from "../components/Products";
@@ -9,6 +10,7 @@ function HomePage({ handleAddToCart }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
+  const [showWheel, setShowWheel] = useState(false);
 
   const handleSearch = async () => {
     setLoading(true);
@@ -30,6 +32,8 @@ function HomePage({ handleAddToCart }) {
 
   return (
     <div className={styles.pageWrapper}>
+      <button style={{position:'fixed',right:30,top:110,zIndex:100}} onClick={()=>setShowWheel(true)}>每日抽獎</button>
+      <WheelModal open={showWheel} onClose={()=>setShowWheel(false)} />
       <SearchBar query={query} setQuery={setQuery} onSearch={handleSearch} />
       {loading ? (
         <p>載入中...</p>

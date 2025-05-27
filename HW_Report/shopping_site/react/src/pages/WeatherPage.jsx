@@ -4,10 +4,11 @@ export default function WeatherPage() {
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [city, setCity] = useState("Taipei");
-    const [searchInput, setSearchInput] = useState("");
-    const [searchLoading, setSearchLoading] = useState(false);
-    const [searchError, setSearchError] = useState(null);
+    const [city] = useState("Taipei");
+    // const [city, setCity] = useState("Taipei");
+    // const [searchInput, setSearchInput] = useState("");
+    // const [searchLoading, setSearchLoading] = useState(false);
+    // const [searchError, setSearchError] = useState(null);
     const [recommendations, setRecommendations] = useState([]);
     const [recLoading, setRecLoading] = useState(false);
     const [recError, setRecError] = useState(null);

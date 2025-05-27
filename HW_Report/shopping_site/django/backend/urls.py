@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from rest_framework import routers
-from products.views import ProductViewSet, smart_search, weather_recommendation, image_search
+from products.views import ProductViewSet
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet, "products")
@@ -28,15 +28,10 @@ urlpatterns = [
     # API routes go here
     path("admin/", admin.site.urls),  # Place this BEFORE the catch-all re_path
     path("api/products/", include("products.urls")),
-    # path("api/products/smart-search/", smart_search, name="smart_search"),
-    # path("api/products/weather-recommendation/", weather_recommendation, name="weather_recommendation"),
-    # path("api/products/image-search/", image_search, name='image_search'),
     path("api/weather/", include("weather.urls")),
     path("api/", include(router.urls)),
-    
-    # 自訂登入 / 登出 API / 註冊
     path("api/accounts/", include("accounts.urls")),
-    # path("accounts/", include("django_registration.backends.one_step.urls")),
+    path('api/wheel/', include('wheel.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

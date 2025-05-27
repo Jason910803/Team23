@@ -31,3 +31,6 @@ yarn-error.log*
 
 *.pem
 *.tar.gz
+
+# database
+db.sqlite3

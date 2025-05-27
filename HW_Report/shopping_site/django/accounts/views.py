@@ -8,6 +8,8 @@ from rest_framework.permissions import IsAuthenticated
 from .models import MyUser
 from .serializers import MyUserSerializer
 import logging
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 logger = logging.getLogger(__name__)  # 可用 logger.debug/info/warning
 
@@ -63,7 +65,7 @@ class RegisterView(APIView):
         if MyUser.objects.filter(name=name).exists():
             return Response({"error": "帳號已存在"}, status=400)
 
-        user = MyUser.objects.create(name=name, email=email, password=password)
+        user = MyUser.objects.create(name=name, email=email, password=password, spin_chances=1)
         return Response({"message": "註冊成功！"}, status=201)
     
 class ProfileView(APIView):
@@ -94,3 +96,21 @@ class ProfileView(APIView):
                 request.session["username"] = serializer.validated_data["name"]
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
+
+class SpinWheelView(APIView):
+    def post(self, request):
+        username = request.session.get("username")
+        prize = request.data.get("prize")
+        if not username or not prize:
+            return Response({"error": "Missing username or prize"}, status=400)
+        try:
+            user = MyUser.objects.get(name=username)
+        except MyUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=404)
+        if user.spin_chances <= 0:
+            return Response({"error": "No spin chances left"}, status=400)
+        user.spin_chances -= 1
+        user.last_prize = prize
+        user.save()
+        data = MyUserSerializer(user).data
+        return Response(data)

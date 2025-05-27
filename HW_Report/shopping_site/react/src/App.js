@@ -8,14 +8,15 @@ import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage"
-import WelcomePage from "./pages/WelcomePage"
+import LoginPage from "./pages/LoginPage";
+import WelcomePage from "./pages/WelcomePage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import SmartSearchPage from "./pages/SmartSearchPage";
 import WeatherPage from "./pages/WeatherPage";
 import ImageSearchPage from "./pages/ImageSearchPage";
+// import SpinPage from "./pages/SpinPage";
 
 import { AuthContext } from "./context/AuthContext";
 

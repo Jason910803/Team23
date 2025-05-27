@@ -32,7 +32,7 @@ function HomePage({ handleAddToCart }) {
 
   return (
     <div className={styles.pageWrapper}>
-      <button style={{position:'fixed',right:30,top:110,zIndex:100}} onClick={()=>setShowWheel(true)}>每日抽獎</button>
+      <button className={styles.wheelButton} onClick={()=>setShowWheel(true)}>抽</button>
       <WheelModal open={showWheel} onClose={()=>setShowWheel(false)} />
       <SearchBar query={query} setQuery={setQuery} onSearch={handleSearch} />
       {loading ? (

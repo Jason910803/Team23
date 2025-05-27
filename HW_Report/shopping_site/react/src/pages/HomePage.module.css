@@ -4,3 +4,33 @@
     gap: 40px; /* 每個 section 間距 */
     padding: 2rem;
 }
+
+.wheelButton {
+    position: fixed;
+    right: 30px;
+    top: 110px;
+    z-index: 1039;
+    background-color: red;
+    color: white;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.wheelButton:hover {
+    background-color: darkred;
+}

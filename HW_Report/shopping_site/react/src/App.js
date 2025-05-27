@@ -16,7 +16,7 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 import SmartSearchPage from "./pages/SmartSearchPage";
 import WeatherPage from "./pages/WeatherPage";
 import ImageSearchPage from "./pages/ImageSearchPage";
-import SpinPage from "./pages/SpinPage";
+// import SpinPage from "./pages/SpinPage";
 
 import { AuthContext } from "./context/AuthContext";
 

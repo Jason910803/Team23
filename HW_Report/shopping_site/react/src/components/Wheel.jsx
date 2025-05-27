@@ -98,7 +98,7 @@ function Wheel() {
 
     // Calculate the segment's angular range
     const segmentStart = segmentAngleDeg * prizeIndex;
-    const segmentEnd = segmentAngleDeg * (prizeIndex + 1);
+    // const segmentEnd = segmentAngleDeg * (prizeIndex + 1);
 
     // Pick a random angle within the segment (avoid edges for clarity)
     const margin = segmentAngleDeg * 0.15; // 15% margin on each side

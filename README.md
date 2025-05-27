@@ -55,6 +55,7 @@ sudo docker compose run --rm django python manage.py build_image_index
 
 - 若發現搜尋不出結果，可能是因為商品的 embedding 還沒有建立，可以去後台看商品的 embedding 是不是 null，是的話跑上面的指令就可以建立了
 - 因為現在是執行第一次圖片比對後才把 model load 進來，因此第一次搜尋會需要等一下，好處是 `docker compose up` 時會快很多
+- 可以在 `django/data/products.json` 自己加商品，然後跑 `sudo docker compose run --rm django python manage.py import_products data/products.json` 
 
 ### docker image連結
 前端\(react\):  https://hub.docker.com/r/lipcut/react_team23

@@ -61,6 +61,9 @@ function Header() {
                     <li>
                       <Link className="dropdown-item" to="/image-search">根據圖片推薦</Link>
                     </li>
+                    <li>
+                      <Link className="dropdown-item" to="/mix-search">圖片敘述推薦</Link>
+                    </li>
                   </ul>
                 </li>
                 <li className="nav-item">

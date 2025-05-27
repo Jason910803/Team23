@@ -6,7 +6,7 @@ import requests
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
-import os
+import os, traceback
 import google.generativeai as genai
 # For image searching
 from rest_framework.decorators import api_view, permission_classes
@@ -31,6 +31,20 @@ class ProductViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['name', 'description', 'category__name']
     ordering_fields = ['price', 'created_at']
+
+def extract_keywords(text):
+    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+    if not GEMINI_API_KEY:
+        print("GEMINI_API_KEY not set !!!")
+        return JsonResponse({'error': 'Gemini API key not set'}, status=500)
+    genai.configure(api_key=GEMINI_API_KEY)
+    model = genai.GenerativeModel('gemini-2.0-flash')
+    prompt = f"從以下需求句子萃取顏色與服裝類型（最多 5 個詞），\
+             只回半形逗號分隔關鍵字：『{text}』"
+    resp = model.generate_content(prompt, generation_config={"response_mime_type": "text/plain"})
+    print("Gemini API response:", resp)
+    # 🔹 確保回傳 list（非 set）
+    return [kw.strip() for kw in resp.text.split(",") if kw.strip()]
 
 @csrf_exempt
 def smart_search(request):
@@ -168,3 +182,64 @@ def image_search(request):
             "score": float(scores[idx]),
         })
     return JsonResponse({"results": result})
+
+@csrf_exempt
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def image_prompt_search(request):
+    try:
+        img_file = request.FILES.get("image")
+        prompt_text = request.POST.get("prompt", "")
+        if not img_file:
+            return JsonResponse({"error": "No image uploaded"}, status=400)
+
+        # 1. 圖片向量
+        clip_model = get_clip_model()
+        img_emb = clip_model.encode(
+            Image.open(img_file).convert("RGB"),
+            device="cpu",
+            normalize_embeddings=True,
+        )
+
+        # 2. 處理文字提示
+        if prompt_text.strip():
+            keywords = extract_keywords(prompt_text)  # list[str]
+            text_phrase = " ".join(keywords) or prompt_text
+            text_emb = clip_model.encode(
+                text_phrase, device="cpu", normalize_embeddings=True
+            )
+            query_emb = img_emb + 10 * text_emb
+        else:
+            query_emb = img_emb
+
+        # 3. 相似度比對
+        products = Product.objects.filter(image_embedding__isnull=False)
+        if not products:
+            return JsonResponse({"results": []})
+
+        embeddings = torch.tensor([p.image_embedding for p in products])
+        scores = torch.mv(embeddings, torch.tensor(query_emb))  # cosine
+
+        topk = torch.topk(scores, k=min(20, len(products)))
+        result = []
+        for idx in topk.indices.tolist():
+            p = products[idx]
+            result.append({
+                "id": p.id,
+                "name": p.name,
+                "description": p.description,
+                "price": str(p.price),               # 🔹 Decimal → str
+                "image": p.image.url if p.image else None,
+                "category": p.category.name if p.category else None,
+                "score": float(scores[idx]),          # 🔹 Tensor → float
+            })
+
+        return JsonResponse({"results": result})
+
+    except RuntimeError as e:       # 例如 GEMINI_API_KEY 缺失
+        return JsonResponse({"error": str(e)}, status=500)
+
+    except Exception as e:
+        # 其它未預期錯誤：印 log 再回 500
+        traceback.print_exc()
+        return JsonResponse({"error": "Server error", "detail": str(e)}, status=500)

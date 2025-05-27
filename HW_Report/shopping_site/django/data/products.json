@@ -1,0 +1,34 @@
+[
+    {
+      "name": "紅 T-Shirt",
+      "description": "beautiful red t-shirt.",
+      "price": 399,
+      "stock": 20,
+      "category": "服飾",
+      "image": "products/red_tshirt.jpg"
+    },
+    {
+        "name": "藍 T-Shirt",
+        "description": "beautiful blue t-shirt.",
+        "price": 399,
+        "stock": 20,
+        "category": "服飾",
+        "image": "products/blue_tshirt.jpg"
+    },
+    {
+        "name": "綠 T-Shirt",
+        "description": "beautiful green t-shirt.",
+        "price": 399,
+        "stock": 20,
+        "category": "服飾",
+        "image": "products/green_tshirt.jpg"
+    },
+    {
+        "name": "黃 T-Shirt",
+        "description": "beautiful yellow t-shirt.",
+        "price": 399,
+        "stock": 20,
+        "category": "服飾",
+        "image": "products/yellow_tshirt.jpg"
+    }
+]

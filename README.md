@@ -9,9 +9,6 @@ $ cd HW_Report/shopping_site
 # 在本地端建立image
 $ sudo docker compose build --no-cache
 $ sudo docker compose up
-
-# 從docker pull已建立好的image
-$ sudo docker compose up
 ```
 
 之後前往`http://localhost:3000`就可以看得到網頁了。
@@ -61,10 +58,3 @@ sudo docker compose run --rm django python manage.py build_image_index
 前端\(react\):  https://hub.docker.com/r/lipcut/react_team23
 
 後端\(django\): https://hub.docker.com/r/lipcut/django_team23
-
-## new_shop
-### 網站介紹
-使用[Google Chrome Lab的資料](https://github.com/GoogleChromeLabs/sample-pie-shop/blob/master/src/data/products.json)串接MongoDB實作fuzzy search，讓使用者即使打錯一些字也能找到想輸入的資料
-### 使用方法
-`$ cd HW_Report/new_shop/django_shop`
-`python manage.py runserver`

@@ -15,6 +15,7 @@ import ProfilePage from "./pages/ProfilePage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import SmartSearchPage from "./pages/SmartSearchPage";
 import WeatherPage from "./pages/WeatherPage";
+import ImageSearchPage from "./pages/ImageSearchPage";
 
 import { AuthContext } from "./context/AuthContext";
 
@@ -173,6 +174,7 @@ function App() {
               />
             }
           />
+          <Route path="/image-search" element={<ImageSearchPage />} />
         </Route>
       </Routes>
       <ToastContainer />

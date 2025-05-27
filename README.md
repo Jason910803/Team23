@@ -26,7 +26,7 @@ $ sudo docker compose up --watch
 或是在原本開啓的終端機按`W`鍵開關。
 
 ### 注意事項
-因為現在不再追蹤 `db.sqlite3`，而是根據 `migrations` 自動建立，因此若大家本地的資料庫有落後，需要跑以下指令確保能正常運行功能
+若大家發現本地的資料庫有落後，需要跑以下指令確保能正常運行功能
 ```
 sudo docker compose run --rm django python manage.py makemigrations
 sudo docker compose run --rm django python manage.py migrate

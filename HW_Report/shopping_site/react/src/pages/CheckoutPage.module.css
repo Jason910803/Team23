@@ -1,0 +1,209 @@
+.checkoutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  color: #333333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.checkoutContainer h1 {
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #333333;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.checkoutLayout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .checkoutLayout {
+    flex-direction: column;
+  }
+}
+
+/* Order Summary Styles */
+.orderSummary {
+  flex: 1;
+  background-color: #f8f9fa;
+  padding: 1.8rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.orderSummary h2 {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  color: #333333;
+}
+
+.items {
+  margin-bottom: 1.5rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #000000;
+}
+
+.productInfo img {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  transition: transform 0.2s;
+}
+
+.productInfo img:hover {
+  transform: scale(1.05);
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #000000;
+}
+
+.totalSection {
+  margin-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.finalTotal {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 1.25rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1.25rem;
+  color: #333333;
+}
+
+.finalTotal span:last-child {
+  color: #0d6efd;
+}
+
+/* Form Styles */
+.checkoutForm {
+  flex: 2;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.checkoutForm h2 {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  color: #333333;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formGroup input:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+.inputError {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1) !important;
+}
+
+.errorMessage {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.formRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.formRow .formGroup {
+  flex: 1;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+}
+
+.cancelButton {
+  padding: 0.75rem 1.75rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.cancelButton:hover {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
+}
+
+.submitButton {
+  padding: 0.75rem 2.25rem;
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.2);
+}
+
+.submitButton:hover {
+  background-color: #0b5ed7;
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+  transform: translateY(-1px);
+}

@@ -194,6 +194,7 @@ def image_prompt_search(request):
             return JsonResponse({"error": "No image uploaded"}, status=400)
 
         # 1. 圖片向量
+        clip_model = get_clip_model()
         img_emb = clip_model.encode(
             Image.open(img_file).convert("RGB"),
             device="cpu",

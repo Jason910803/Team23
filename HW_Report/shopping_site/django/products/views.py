@@ -14,9 +14,8 @@ from rest_framework.permissions import AllowAny
 from PIL import Image
 import torch
 from sentence_transformers import SentenceTransformer
+from functools import lru_cache
 
-clip_model = SentenceTransformer("clip-ViT-B-32")
-clip_model.eval()
 
 # Create your views here.
 class ProductSerializer(serializers.ModelSerializer):
@@ -122,6 +121,13 @@ def weather_recommendation(request):
     ]
     return JsonResponse({'results': data})
 
+@lru_cache(maxsize=1)
+def get_clip_model():
+    print("🧠 正在載入 CLIP 模型中...")
+    model = SentenceTransformer("clip-ViT-B-32")
+    model.eval()
+    return model
+
 @csrf_exempt 
 @api_view(["POST"])
 @permission_classes([AllowAny])
@@ -131,6 +137,7 @@ def image_search(request):
         return JsonResponse({"error": "No image uploaded"}, status=400)
 
     # 1) 取得查詢圖片向量
+    clip_model = get_clip_model()
     query_emb = clip_model.encode(
         Image.open(img_file).convert("RGB"),
         device="cpu",
